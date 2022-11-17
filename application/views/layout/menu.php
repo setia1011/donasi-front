@@ -82,7 +82,7 @@ $nav_layanan                = $this->nav_model->nav_layanan();
             <li><a href="<?php echo base_url('kontak') ?>">HUBUNGI</a></li>
 
             <!-- kontak  -->
-            <li><a href="http://localhost/donasi">DONASI</a></li>
+            <li><a href="http://localhost/donasi"><span class="menu-donasi">DONASI</span></a></li>
 
         </ul>
         <div class="menu-right-option pull-right">

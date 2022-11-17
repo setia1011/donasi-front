@@ -30,7 +30,8 @@ $site_info = $this->konfigurasi_model->listing();
 <!-- DataTables CSS -->
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/datatables/dataTables.bootstrap4.css">
 <!-- Select2 -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/select2/select2.min.css">
+<link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/select2/select2.min.css">
+<link rel="stylesheet" href="<?= base_url('assets/css/donasi.css'); ?>">
   <style type="text/css" media="screen">
   	p {
   		margin-bottom: 15px;

@@ -40,8 +40,8 @@
                      </div>
                     </div>
                     <div class="col-md-8">
-                        <h4 class="contact-title">Tentang Kami</h4>
-                        <div>
+                        <h4>Tentang Kami</h4>
+                        <div style="margin-top: 20px;">
                            <?= $site->tentang;  ?>
                         </div>
                     </div>

@@ -29,6 +29,10 @@ $site_info = $this->konfigurasi_model->listing();
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/tema/assets/css/responsive.css" media="all" />
 <!-- DataTables CSS -->
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/datatables/dataTables.bootstrap4.css">
+<!-- Google fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/select2/select2.min.css">
 <link rel="stylesheet" href="<?= base_url('assets/css/donasi.css'); ?>">
@@ -36,6 +40,9 @@ $site_info = $this->konfigurasi_model->listing();
   	p {
   		margin-bottom: 15px;
   	}
+    * {
+      font-family: 'Roboto', sans-serif;
+    }
   </style>
 </head>
 

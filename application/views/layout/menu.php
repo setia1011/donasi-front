@@ -32,7 +32,7 @@ $nav_layanan                = $this->nav_model->nav_layanan();
 
             <li><a href="<?php echo base_url('/tentang-kami'); ?>" class="active">TENTANG KAMI</a></li>
 
-            <li><a href="<?php echo base_url('/peta'); ?>" class="active">PETA</a></li>
+            <li><a href="<?php echo base_url('/peta'); ?>">PETA</a></li>
 
             <!-- berita -->
             <!-- <li class="dropdown">

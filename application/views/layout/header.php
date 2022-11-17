@@ -113,7 +113,8 @@ $site = $this->konfigurasi_model->listing();
 <div class="container">
 <div class="row">
 <div class="header-top">
-    <ul class="h-contact">
+    <div style="display: block; height: 40px;"></div>
+    <!-- <ul class="h-contact">
         <li><i class="fa fa-map"></i> <?php echo $site->namaweb ?></li>
     </ul>
     <div class="donate-option">
@@ -125,8 +126,7 @@ $site = $this->konfigurasi_model->listing();
             <a href="tel:<?php echo $site->telepon ?>"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $site->telepon ?></a>
         <?php } ?>
             <a href="<?php echo base_url('kontak') ?>"><i class="fa fa-envelope" aria-hidden="true"></i> Kontak</a>
-    </div>
-    <!-- .donate-option -->
+    </div> -->
 </div>
 <!-- .header-top -->
 </div>

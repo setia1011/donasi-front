@@ -107,7 +107,13 @@ class Home extends CI_Controller {
 	}
 
 	public function peta() {
-		echo "peta";
+		$site = $this->konfigurasi_model->listing();
+		$data = array(	'title'		=> 'Kontak '.$site->namaweb.' | '.$site->tagline,
+						'deskripsi'	=> 'Kontak '.$site->namaweb.' | '.$site->tagline.' '.$site->tentang,
+						'keywords'	=> 'Kontak '.$site->namaweb.' | '.$site->tagline.' '.$site->keywords,
+						'site'		=> $site,
+						'isi'		=> 'peta/list');
+		$this->load->view('layout/wrapper', $data, FALSE);
 	}
 }
 

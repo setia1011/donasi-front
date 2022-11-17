@@ -28,10 +28,14 @@ $nav_layanan                = $this->nav_model->nav_layanan();
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
             <!-- home -->
-            <li><a href="<?php echo base_url() ?>" class="active">BERANDA</a></li>
+            <!-- <li><a href="<?php echo base_url() ?>" class="active">BERANDA</a></li> -->
+
+            <li><a href="<?php echo base_url('/tentang-kami'); ?>" class="active">TENTANG KAMI</a></li>
+
+            <li><a href="<?php echo base_url('/peta'); ?>" class="active">PETA</a></li>
 
             <!-- berita -->
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BERITA <span class="caret"></span></a>
                 <ul class="dropdown-menu sub-menu">
                     <?php foreach($nav_berita as $nav_berita) { ?>
@@ -39,27 +43,27 @@ $nav_layanan                = $this->nav_model->nav_layanan();
                     <?php } ?>
                     <li class="sub-active"><a href="<?php echo base_url('berita') ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Indeks Berita</a></li>                   
                 </ul>
-            </li>
+            </li> -->
 
             <!-- LAYANAN -->
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LAYANAN<span class="caret"></span></a>
                 <ul class="dropdown-menu sub-menu">
                     <?php foreach($nav_layanan as $nav_layanan) { ?>
                     <li class="sub-active"><a href="<?php echo base_url('berita/layanan/'.$nav_layanan->slug_berita) ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $nav_layanan->judul_berita ?></a></li>
                     <?php } ?> 
                 </ul>
-            </li>
+            </li> -->
 
             <!-- PROFIL -->
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PROFIL<span class="caret"></span></a>
                 <ul class="dropdown-menu sub-menu">
                     <?php foreach($nav_profil as $nav_profil) { ?>
                     <li class="sub-active"><a href="<?php echo base_url('berita/profil/'.$nav_profil->slug_berita) ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $nav_profil->judul_berita ?></a></li>
                     <?php } ?> 
                 </ul>
-            </li>
+            </li> -->
 
             <!-- galeri -->
             <li class="dropdown">
@@ -70,13 +74,16 @@ $nav_layanan                = $this->nav_model->nav_layanan();
                     <li class="sub-active"><a href="<?php echo base_url('video'); ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Galeri Video</a></li>                   
                 </ul>
             </li>
-            
 
             <!-- DOWNLOAD -->
-            <li><a href="<?php echo base_url('download') ?>">UNDUHAN</a></li>
-            
+            <li><a href="<?php echo base_url('download') ?>">DOKUMEN</a></li>
+
             <!-- kontak  -->
-            <li><a href="<?php echo base_url('kontak') ?>">KONTAK</a></li>
+            <li><a href="<?php echo base_url('kontak') ?>">HUBUNGI</a></li>
+
+            <!-- kontak  -->
+            <li><a href="http://localhost/donasi">DONASI</a></li>
+
         </ul>
         <div class="menu-right-option pull-right">
             

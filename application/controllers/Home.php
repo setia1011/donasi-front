@@ -95,6 +95,14 @@ class Home extends CI_Controller {
 			);
 		$this->load->view('layout/wrapper', $data);
 	}
+
+	public function about() {
+		echo "about";
+	}
+
+	public function peta() {
+		echo "peta";
+	}
 }
 
 /* End of file Home.php */

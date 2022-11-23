@@ -27,28 +27,28 @@ $site = $this->konfigurasi_model->listing();
 <div class="box-content">
 <ul class="box-bg-img">
 <li>
-    <a class="bg-1" href="#"><img src="<?php echo base_url() ?>assets/tema/assets/images/box-style/01.jpg" alt=""></a>
+    <a class="bg-1" href="#"><img src="<?php echo base_url('assets/tema/assets/images/box-style/01.jpg') ?>" alt=""></a>
 </li>
 <li>
-    <a class="bg-2" href="#"><img src="<?php echo base_url() ?>assets/tema/assets/images/box-style/02.jpg" alt=""></a>
+    <a class="bg-2" href="#"><img src="<?php echo base_url('assets/tema/assets/images/box-style/02.jpg') ?>" alt=""></a>
 </li>
 <li>
-    <a class="bg-3" href="#"><img src="<?php echo base_url() ?>assets/tema/assets/images/box-style/03.jpg" alt=""></a>
+    <a class="bg-3" href="#"><img src="<?php echo base_url('assets/tema/assets/images/box-style/03.jpg') ?>" alt=""></a>
 </li>
 <li>
-    <a class="bg-4" href="#"><img src="<?php echo base_url() ?>assets/tema/assets/images/box-style/04.jpg" alt=""></a>
+    <a class="bg-4" href="#"><img src="<?php echo base_url('assets/tema/assets/images/box-style/04.jpg') ?>" alt=""></a>
 </li>
 <li>
-    <a class="bg-5" href="#"><img src="<?php echo base_url() ?>assets/tema/assets/images/box-style/05.jpg" alt=""></a>
+    <a class="bg-5" href="#"><img src="<?php echo base_url('assets/tema/assets/images/box-style/05.jpg') ?>" alt=""></a>
 </li>
 <li>
-    <a class="bg-6" href="#"><img src="<?php echo base_url() ?>assets/tema/assets/images/box-style/06.jpg" alt=""></a>
+    <a class="bg-6" href="#"><img src="<?php echo base_url('assets/tema/assets/images/box-style/06.jpg') ?>" alt=""></a>
 </li>
 <li>
-    <a class="bg-7" href="#"><img src="<?php echo base_url() ?>assets/tema/assets/images/box-style/07.jpg" alt=""></a>
+    <a class="bg-7" href="#"><img src="<?php echo base_url('assets/tema/assets/images/box-style/07.jpg') ?>" alt=""></a>
 </li>
 <li>
-    <a class="bg-8" href="#"><img src="<?php echo base_url() ?>assets/tema/assets/images/box-style/08.jpg" alt=""></a>
+    <a class="bg-8" href="#"><img src="<?php echo base_url('assets/tema/assets/images/box-style/08.jpg') ?>" alt=""></a>
 </li>
 </ul>
 </div>
@@ -60,28 +60,28 @@ $site = $this->konfigurasi_model->listing();
 <div class="box-content">
 <ul class="box-pattern-img">
 <li>
-    <a class="pt-1" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/01.png"" alt=""></a>
+    <a class="pt-1" href="#"><img src="<?= base_url('assets/tema/assets/images/auror/01.jpg'); ?>" alt=""></a>
 </li>
 <li>
-    <a class="pt-2" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/02.png"" alt=""></a>
+    <a class="pt-2" href="#"><img src="<?= base_url('assets/tema/assets/images/auror/02.jpg'); ?>" alt=""></a>
 </li>
 <li>
-    <a class="pt-3" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/03.png"" alt=""></a>
+    <a class="pt-3" href="#"><img src="<?= base_url('assets/tema/assets/images/auror/03.jpg'); ?>" alt=""></a>
 </li>
 <li>
-    <a class="pt-4" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/04.png"" alt=""></a>
+    <a class="pt-4" href="#"><img src="<?= base_url('assets/tema/assets/images/auror/04.jpg'); ?>" alt=""></a>
 </li>
 <li>
-    <a class="pt-5" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/05.png"" alt=""></a>
+    <a class="pt-5" href="#"><img src="<?= base_url('assets/tema/assets/images/auror/05.jpg'); ?>" alt=""></a>
 </li>
 <li>
-    <a class="pt-6" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/06.png"" alt=""></a>
+    <a class="pt-6" href="#"><img src="<?= base_url('assets/tema/assets/images/auror/06.jpg'); ?>" alt=""></a>
 </li>
 <li>
-    <a class="pt-7" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/07.png"" alt=""></a>
+    <a class="pt-7" href="#"><img src="<?= base_url('assets/tema/assets/images/auror/07.jpg'); ?>" alt=""></a>
 </li>
 <li>
-    <a class="pt-8" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/08.png"" alt=""></a>
+    <a class="pt-8" href="#"><img src="<?= base_url('assets/tema/assets/images/auror/08.jpg'); ?>" alt=""></a>
 </li>
 </ul>
 </div>

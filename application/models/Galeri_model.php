@@ -38,6 +38,20 @@ class Galeri_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function sliderx() {
+		$this->db->select('galeri.*, kategori_galeri.nama_kategori_galeri, users.nama');
+		$this->db->from('galeri');
+		// Join dg 2 tabel
+		$this->db->join('kategori_galeri','kategori_galeri.id_kategori_galeri = galeri.id_kategori_galeri','LEFT');
+		$this->db->join('users','users.id_user = galeri.id_user','LEFT');
+		// End join
+		$this->db->where('jenis_galeri','Homepage');
+		$this->db->order_by('urutan','ASC');
+		$this->db->limit(5);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
 	// Listing data slider
 	public function galeri_home() {
 		$this->db->select('galeri.*, kategori_galeri.nama_kategori_galeri, kategori_galeri.slug_kategori_galeri, , users.nama');

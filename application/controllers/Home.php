@@ -17,6 +17,7 @@ class Home extends CI_Controller {
 	{
 		$site 			= $this->konfigurasi_model->listing();
 		$slider 		= $this->galeri_model->slider();
+		$sliderx = $this->galeri_model->sliderx();
 		$popup 			= $this->galeri_model->popup_aktif();
 		$headline		= $this->berita_model->listing_headline();
 		$galeri 		= $this->galeri_model->galeri_home();
@@ -67,6 +68,7 @@ class Home extends CI_Controller {
 						'keywords'			=> $site->keywords,
 						'site'				=> $site,
 						'slider'			=> $slider,
+						'sliderx' => $sliderx,
 						'headline'			=> $headline,
 						'pagin' 			=> $this->pagination->create_links(),
 						'berita'			=> $berita,

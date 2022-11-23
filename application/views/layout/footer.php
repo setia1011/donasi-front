@@ -195,6 +195,20 @@ $nav_profil     = $this->nav_model->nav_profil();
 <!-- DataTables JS -->
 <script src="<?php echo base_url() ?>assets/admin/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<?php echo base_url() ?>assets/admin/plugins/datatables/dataTables.bootstrap4.js"></script>
+<script src="<?= base_url('assets/admin/plugins/slick-master/slick/slick.js'); ?>"></script>
+
+<!-- script -->
+<script>
+
+$(document).ready(function(){
+   $('.donasi').slick({
+      infinite: false,
+      slidesToShow: 3,
+      slidesToScroll: 3
+   });
+});
+
+</script>
 <script>
   $(function () {
     $("#example1").DataTable();

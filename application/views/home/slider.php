@@ -18,10 +18,10 @@
                 <div class="slider-content-area">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-6"></div>
+                            <!-- <div class="col-md-12"></div> -->
                             <!-- .col-md-6 -->
-                            <div class="col-md-6">
-                                <div class="slider-content">
+                            <div class="col-md-12">
+                                <div class="slider-content text-center">
                                     <!-- <h3><?php echo $site->namaweb ?></h3> -->
                                     <h2><?php echo $slider->judul_galeri ?></h2>
                                     <p><?php echo strip_tags($slider->isi) ?></p>

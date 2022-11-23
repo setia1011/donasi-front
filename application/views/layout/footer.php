@@ -177,6 +177,7 @@ $nav_profil     = $this->nav_model->nav_profil();
 
 
 <script type="text/javascript" src="<?php echo base_url() ?>assets/tema/assets/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/tema/assets/js/custom.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/tema/assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/tema/assets/js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/tema/assets/js/jquery.waypoints.min.js"></script>
@@ -197,14 +198,20 @@ $nav_profil     = $this->nav_model->nav_profil();
 <script src="<?php echo base_url() ?>assets/admin/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="<?= base_url('assets/admin/plugins/slick-master/slick/slick.js'); ?>"></script>
 
+<!-- ckeditor -->
+<script type="text/javascript" src="<?php echo base_url() ?>assets/admin/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
+
+
 <!-- script -->
 <script>
 
 $(document).ready(function(){
    $('.donasi').slick({
-      infinite: false,
+      infinite: true,
       slidesToShow: 3,
-      slidesToScroll: 3
+      slidesToScroll: 3,
+      prevArrow: '<button type="button" class="slick-prev">Previous</button>'
    });
 });
 
@@ -222,11 +229,14 @@ $(document).ready(function(){
     // instance, using default configuration.
     ClassicEditor
       .create(document.querySelector('.editorku'))
-      .then(function (editor) {
+      .then(function(editor) {
         // The editor instance
       })
-      .catch(function (error) {
-        console.error(error)
+      .catch(function(error) {
+        console.log(error);
+      })
+      .error(function(error) {
+        console.log(error);
       })
 
     // bootstrap WYSIHTML5 - text editor

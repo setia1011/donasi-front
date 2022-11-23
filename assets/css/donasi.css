@@ -4,3 +4,8 @@
    border-radius: 2px;
    color: white;
 }
+
+.header-style-2 .bg-header-top {
+   background: #337ab7;
+   color: #FFF;
+}

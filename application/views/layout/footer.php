@@ -202,6 +202,8 @@ $nav_profil     = $this->nav_model->nav_profil();
 <script type="text/javascript" src="<?php echo base_url() ?>assets/admin/plugins/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
 
+<script type="text/javascript" src="<?php echo base_url('assets/admin/plugins/iconify/iconify-icon.min.js') ?>"></script>
+
 
 <!-- script -->
 <script>
@@ -209,8 +211,8 @@ $nav_profil     = $this->nav_model->nav_profil();
 $(document).ready(function(){
    $('.donasi').slick({
       infinite: true,
-      slidesToShow: 3,
-      slidesToScroll: 3,
+      slidesToShow: 4,
+      slidesToScroll: 4,
       prevArrow: '<button type="button" class="slick-prev">Previous</button>'
    });
 });

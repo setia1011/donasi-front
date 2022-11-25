@@ -9,3 +9,19 @@
    background: #337ab7;
    color: #FFF;
 }
+
+.wrapper-program {
+   padding-top: 20px;
+   background-color: #68a96817;
+}
+
+.wrapper-program .events-content {
+   border: 1px solid #c03372;
+   border-top: 1px solid #c03372;
+   padding: 27px 26px 30px 30px;
+   box-shadow: 20px 20px 0 0 #c03372;
+}
+
+.wrapper-program .events-content a {
+   color: #c03372;
+}

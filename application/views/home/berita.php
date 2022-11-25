@@ -1,15 +1,11 @@
-
-
-
 <!-- Start Upcoming Events Section -->
-
-
 <section class="bg-upcoming-events">
 <div class="container">
 <div class="row">
 <div class="upcoming-events">
 <div class="section-header">
-    <h2>Berita terbaru</h2>
+    <h2><iconify-icon icon="arcticons:newsreader"></iconify-icon></h2>
+    <div class="text-center" style="margin-bottom: 20px;"><h4 style="color: rgb(0 0 0 / 50%) !important;">BERITA TERKINI</h4></div>
 </div>
 <!-- .section-header -->
 <div class="row">

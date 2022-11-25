@@ -2,6 +2,23 @@
 $site = $this->konfigurasi_model->listing();
 ?>
 <style type="text/css" media="screen">
+  .donasip {
+    z-index: 9999;
+    position: fixed;
+    background-color: #cc9000;
+    padding: 10px;
+    bottom: 0;
+    right: 120px;
+    font-weight: 700;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    /* border-top: solid 2px green;
+    border-left: solid 2px green;
+    border-right: solid 2px green; */
+    min-width: 80px;
+    border-radius: 10px 10px 0 0;
+  }
   .kontakwa {
     z-index: 9999;
     position: fixed;
@@ -36,23 +53,26 @@ $site = $this->konfigurasi_model->listing();
     border-right: solid 2px #e93478; */
     border-radius: 10px 0 0 0;
   }
-  .kontakwa a, .telepon a {
+  .kontakwa a, .telepon a, .donasip a {
     color: white;
     font-size: 40px;
     font-weight: 700;
     text-align: center;
   }
-  .kontakwa:hover, .telepon:hover {
+  .kontakwa:hover, .telepon:hover, .donasip:hover {
     background-color: pink;
 
   }
 </style>
-<div class="telepon">
+<!-- <div class="telepon">
   <a href="tel:<?php echo $site->telepon ?>"><i class="fa fa-phone"></i></a>
 </div>
 <div class="kontakwa">
   <a href="https://wa.me/<?php echo str_replace('+','',$site->hp) ?>?text=Saya%20tertarik%20untuk%20Menggunakan%20Layanan%20di%20Perusahan%20Anda.%20Apakah%20bisa%20dibantu?" class="topbar-social-item"><i class="fa fa-whatsapp"></i>
         </a>
+</div> -->
+<div class="donasip">
+  <a href="https://donasi.id/"><iconify-icon icon="iconoir:donate"></iconify-icon></a>
 </div>
 <!-- END WA -->
 <?php 
@@ -213,6 +233,13 @@ $(document).ready(function(){
       infinite: true,
       slidesToShow: 4,
       slidesToScroll: 4,
+      prevArrow: '<button type="button" class="slick-prev">Previous</button>'
+   });
+
+   $('.mitra').slick({
+      infinite: true,
+      slidesToShow: 6,
+      slidesToScroll: 6,
       prevArrow: '<button type="button" class="slick-prev">Previous</button>'
    });
 });

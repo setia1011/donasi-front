@@ -6,6 +6,8 @@ echo form_open(base_url('admin/berita/proses'));
   <a href="<?php echo base_url('admin/berita/tambah') ?>" class="btn btn-success btn-lg">
   <i class="fa fa-plus"></i> Tambah Berita/Profil</a>
 
+  <?php if ($_SESSION['akses_level'] == 'Admin') { ?>
+
   <button class="btn btn-warning" type="submit" name="draft" onClick="check();" >
       <i class="fa fa-times"></i> Jangan Publikasikan
   </button>
@@ -16,7 +18,10 @@ echo form_open(base_url('admin/berita/proses'));
 
   <button class="btn btn-danger" type="submit" name="hapus" onClick="check();" >
       <i class="fa fa-trash-o"></i> Hapus
-    </button> 
+  </button> 
+
+  <?php } ?>
+  
 <?php 
 $url_navigasi = $this->uri->segment(2); 
 if($this->uri->segment(3) != "") { 

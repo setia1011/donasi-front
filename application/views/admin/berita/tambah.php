@@ -61,7 +61,9 @@ echo form_open_multipart(base_url('admin/berita/tambah'));
 <div class="form-group form-group-lg">
 <label>Status Berita</label>
 <select name="status_berita" class="form-control">
+  <?php if ($_SESSION['akses_level'] == 'Admin') { ?>
 	<option value="Publish">Publikasikan</option>
+  <?php } ?>
 	<option value="Draft">Simpan sebagai draft</option>}
 </select>
 

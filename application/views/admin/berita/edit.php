@@ -32,6 +32,8 @@ echo form_open_multipart(base_url('admin/berita/edit/'.$berita->id_berita));
 
 </div>
 
+<?php if ($_SESSION['akses_level'] == 'Admin') { ?> 
+
 <div class="col-md-6">
 
 <div class="form-group form-group-lg">
@@ -49,6 +51,8 @@ echo form_open_multipart(base_url('admin/berita/edit/'.$berita->id_berita));
 </div>
 
 </div>
+
+<?php } ?>
 
 <div class="col-md-6">
 

@@ -1,6 +1,21 @@
 <section class="bg-blog-style-2">
             <div class="container">
                 <div class="row">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="<?= base_url('/berita/cari') ?>" method="POST">
+                                <div class="input-group">
+                                    <input type="text" name="s" class="form-control" style="padding: 0 0 0 10px;" placeholder="Cari artikel...">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-danger" style="padding: 2px 4px !important;" type="submit">
+                                        <iconify-icon style="font-size: 1.6em;" icon="mdi:text-box-search-outline"></iconify-icon>
+                                    </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div><br></div>
                     <div class="blog-style-2">
                         <div class="row">
                             <div class="col-md-8">

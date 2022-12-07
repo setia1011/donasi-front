@@ -34,23 +34,27 @@ echo form_open_multipart(base_url('admin/berita/tambah'));
 
 </div>
 
+<?php if ($_SESSION['akses_level'] == 'Admin') { ?>
+
 <div class="col-md-6">
 
 <div class="form-group form-group-lg">
 
 <div class="row">
-  <div class="col-md-6">
-    <label>Tanggal Publish</label>
-    <input type="text" name="tanggal_publish" class="form-control tanggal" placeholder="Tanggal publikasi" value="<?php if(isset($_POST['tanggal_publish'])) { echo set_value('tanggal_publish'); }else{ echo date('d-m-Y'); } ?>" data-date-format="dd-mm-yyyy">
-  </div>
-  <div class="col-md-6">
-  <label>Jam Publish</label>
-  <input type="text" name="jam_publish" class="form-control time-picker" placeholder="Jam publikasi" value="<?php if(isset($_POST['jam_publish'])) { echo set_value('jam_publish'); }else{ echo date('H:i:s'); } ?>">
-  </div>
+<div class="col-md-6">
+  <label>Tanggal Publish</label>
+  <input type="text" name="tanggal_publish" class="form-control tanggal" placeholder="Tanggal publikasi" value="<?php if(isset($_POST['tanggal_publish'])) { echo set_value('tanggal_publish'); }else{ echo date('d-m-Y'); } ?>" data-date-format="dd-mm-yyyy">
+</div>
+<div class="col-md-6">
+<label>Jam Publish</label>
+<input type="text" name="jam_publish" class="form-control time-picker" placeholder="Jam publikasi" value="<?php if(isset($_POST['jam_publish'])) { echo set_value('jam_publish'); }else{ echo date('H:i:s'); } ?>">
+</div>
 </div>
 </div>
 
 </div>
+
+<?php } ?>
 
 <div class="col-md-6">
 

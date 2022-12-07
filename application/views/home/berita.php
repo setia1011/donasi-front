@@ -5,7 +5,10 @@
 <div class="upcoming-events">
 <div class="section-header">
     <h2><iconify-icon icon="arcticons:newsreader"></iconify-icon></h2>
-    <div class="text-center" style="margin-bottom: 20px;"><h4 style="color: rgb(0 0 0 / 50%) !important;">BERITA TERKINI</h4></div>
+    <div class="text-center" style="margin-bottom: 20px;">
+        <h4 style="color: rgb(0 0 0 / 50%) !important; margin-bottom: 10px;">BERITA TERKINI</h4>
+        <a href="<?= base_url('berita/') ?>"><h4 class="news-indexes" style="color: #c03372;">INDEKS</h4></a>
+    </div>
 </div>
 <!-- .section-header -->
 <div class="row">
@@ -48,5 +51,8 @@
 <!-- .container -->
 </section>
 
-
-<!-- End Upcoming Events Section -->
+<style>
+    .news-indexes:hover {
+        color: #0099cc !important;
+    }
+</style>

@@ -84,8 +84,10 @@ $nav_layanan                = $this->nav_model->nav_layanan();
             <!-- kontak  -->
             <li><a href="http://localhost/donasi"><span class="menu-donasi">DONASI</span></a></li>
 
+            <li><a href="#"><span id="google_translate_element"></span></a></li>
+
         </ul>
-        <div class="menu-right-option pull-right">
+        <!-- <div class="menu-right-option pull-right">
             
 
             <div class="search-box">
@@ -97,7 +99,7 @@ $nav_layanan                = $this->nav_model->nav_layanan();
                     <input type="text" name="search" id="all-search" placeholder="Search Here">
                 </form>
             </div>
-        </div>
+        </div> -->
         <!-- .header-search-box -->
     </div>
     <!-- .navbar-collapse -->

@@ -142,6 +142,8 @@ class Berita extends CI_Controller {
 
 	// Tambah berita
 	public function tambah()	{
+		$this->load->helper('date');
+		date_default_timezone_set('Asia/Jakarta');
 		// $this->session->set_userdata('upload_image_file_manager',true);
 		$kategori = $this->kategori_model->listing();
 		$this->session->set_userdata('upload_image_file_manager',true);
@@ -156,6 +158,11 @@ class Berita extends CI_Controller {
 			array(	'required'	=> 'Isi berita harus diisi'));
 
 		if($valid->run()) {
+			$i 		= $this->input;
+			$datex = date('Y-m-d',strtotime($i->post('tanggal_publish'))).' '.$i->post('jam_publish');
+			if ($_SESSION['akses_level'] == 'User') {
+				$datex = date('Y-m-d');
+			}
 			if(!empty($_FILES['gambar']['name'])) {
 			$config['upload_path']   = './assets/upload/image/';
       		$config['allowed_types'] = 'gif|jpg|png|svg|jpeg';
@@ -200,7 +207,8 @@ class Berita extends CI_Controller {
 	        				'gambar'		=> $upload_data['uploads']['file_name'],
 	        				'icon'			=> $i->post('icon'),
 	        				'keywords'		=> $i->post('keywords'),
-	        				'tanggal_publish'=> date('Y-m-d',strtotime($i->post('tanggal_publish'))).' '.$i->post('jam_publish'),
+							'tanggal_publish'=> $datex,
+	        				// 'tanggal_publish'=> date('Y-m-d',strtotime($i->post('tanggal_publish'))).' '.$i->post('jam_publish'),
 	        				// 'tanggal_mulai'		=> $i->post('tanggal_mulai'),
 	        				// 'tanggal_selesai'		=> $i->post('tanggal_selesai'),
 	        				'urutan'	=> $i->post('urutan'),
@@ -222,7 +230,8 @@ class Berita extends CI_Controller {
 	        				'status_berita'	=> $i->post('status_berita'),
 	        				'icon'			=> $i->post('icon'),
 	        				'keywords'		=> $i->post('keywords'),
-	        				'tanggal_publish'=> date('Y-m-d',strtotime($i->post('tanggal_publish'))).' '.$i->post('jam_publish'),
+							'tanggal_publish'=> $datex,
+	        				// 'tanggal_publish'=> date('Y-m-d',strtotime($i->post('tanggal_publish'))).' '.$i->post('jam_publish'),
 	        				// 'tanggal_mulai'		=> $i->post('tanggal_mulai'),
 	        				// 'tanggal_selesai'		=> $i->post('tanggal_selesai'),
 	        				'urutan'	=> $i->post('urutan'),
@@ -241,6 +250,9 @@ class Berita extends CI_Controller {
 
 	// Edit berita
 	public function edit($id_berita)	{
+		$this->load->helper('date');
+		date_default_timezone_set('Asia/Jakarta');
+
 		$this->session->set_userdata('upload_image_file_manager',true);
 		$kategori 	= $this->kategori_model->listing();
 		$berita 	= $this->berita_model->detail($id_berita); 
@@ -256,7 +268,11 @@ class Berita extends CI_Controller {
 			array(	'required'	=> 'Isi berita harus diisi'));
 
 		if($valid->run()) {
-
+			$i 		= $this->input;
+			$datex = date('Y-m-d',strtotime($i->post('tanggal_publish'))).' '.$i->post('jam_publish');
+			if ($_SESSION['akses_level'] == 'User') {
+				$datex = date('Y-m-d');
+			}
 			if(!empty($_FILES['gambar']['name'])) {
 
 			$config['upload_path']   = './assets/upload/image/';
@@ -311,7 +327,8 @@ class Berita extends CI_Controller {
 	        				'icon'			=> $i->post('icon'),
 	        				'gambar'		=> $upload_data['uploads']['file_name'],
 	        				'keywords'		=> $i->post('keywords'),
-	        				'tanggal_publish'=> date('Y-m-d',strtotime($i->post('tanggal_publish'))).' '.$i->post('jam_publish'),
+							'tanggal_publish'=> $datex,
+	        				// 'tanggal_publish'=> date('Y-m-d',strtotime($i->post('tanggal_publish'))).' '.$i->post('jam_publish'),
 	        				// 'tanggal_mulai'		=> $i->post('tanggal_mulai'),
 	        				// 'tanggal_selesai'		=> $i->post('tanggal_selesai'),
 	        				'urutan'	=> $i->post('urutan'),
@@ -333,7 +350,8 @@ class Berita extends CI_Controller {
 	        				'status_berita'	=> $i->post('status_berita'),
 	        				'icon'			=> $i->post('icon'),
 	        				'keywords'		=> $i->post('keywords'),
-	        				'tanggal_publish'=> date('Y-m-d',strtotime($i->post('tanggal_publish'))).' '.$i->post('jam_publish'),
+							'tanggal_publish'=> $datex,
+	        				// 'tanggal_publish'=> date('Y-m-d',strtotime($i->post('tanggal_publish'))).' '.$i->post('jam_publish'),
 	        				// 'tanggal_mulai'		=> $i->post('tanggal_mulai'),
 	        				// 'tanggal_selesai'		=> $i->post('tanggal_selesai'),
 	        				'urutan'	=> $i->post('urutan'),

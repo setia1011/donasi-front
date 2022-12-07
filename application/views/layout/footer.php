@@ -224,9 +224,14 @@ $nav_profil     = $this->nav_model->nav_profil();
 
 <script type="text/javascript" src="<?php echo base_url('assets/admin/plugins/iconify/iconify-icon.min.js') ?>"></script>
 
+<script type="text/javascript" src="<?= base_url('assets/admin/plugins/translator/translator.min.js'); ?>"></script>  
+<!-- Original: https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit    -->
 
-<!-- script -->
 <script>
+// Translator
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'id', includedLanguages: 'id,en'}, 'google_translate_element');
+}
 
 $(document).ready(function(){
    $('.donasi').slick({

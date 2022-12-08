@@ -17,7 +17,6 @@ class Berita extends CI_Controller {
 		$populer	= $this->berita_model->populer();
 		
 		// Berita dan paginasi
-		// Berita dan paginasi
 		$this->load->library('pagination');
 		$config['base_url'] 		= base_url().'berita/index/';
 		$config['total_rows'] 		= count(array($this->berita_model->total()));
@@ -150,9 +149,7 @@ class Berita extends CI_Controller {
 			redirect(base_url('oops'),'refresh');
 		}
 		
-		
 		$id_kategori	= $kategori->id_kategori;
-
 
 		// Berita dan paginasi
 		$this->load->library('pagination');
@@ -238,14 +235,14 @@ class Berita extends CI_Controller {
 		$berita 	= $this->berita_model->read($slug_berita);
 		$profil 	= $this->nav_model->nav_profil();
 
-		if(count(array($berita)) < 1) {
+		if (count(array($berita)) < 1) {
 			redirect(base_url('oops'),'refresh');
 		}
 
 		$listing 	= $this->berita_model->listing_profil();
 
 		// Update hit
-		if($berita) {
+		if ($berita) {
 			$newhits = $berita->hits + 1;
 			$hit = array(	'id_berita'	=> $berita->id_berita,
 							'hits'		=> $newhits);
@@ -269,14 +266,14 @@ class Berita extends CI_Controller {
 		$berita 	= $this->berita_model->read($slug_berita);
 		$profil 	= $this->nav_model->nav_layanan();
 
-		if(count(array($berita)) < 1) {
+		if (count(array($berita)) < 1) {
 			redirect(base_url('oops'),'refresh');
 		}
 
 		$listing 	= $this->berita_model->listing_layanan();
 
 		// Update hit
-		if($berita) {
+		if ($berita) {
 			$newhits = $berita->hits + 1;
 			$hit = array(	'id_berita'	=> $berita->id_berita,
 							'hits'		=> $newhits);
@@ -293,7 +290,6 @@ class Berita extends CI_Controller {
 						'isi'		=> 'berita/layanan');
 		$this->load->view('layout/wrapper', $data, FALSE);
 	}
-
 }
 
 /* End of file Berita.php */

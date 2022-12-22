@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               10.4.25-MariaDB - mariadb.org binary distribution
+-- Server version:               10.4.27-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win64
 -- HeidiSQL Version:             12.0.0.6468
 -- --------------------------------------------------------
@@ -16,7 +16,7 @@
 
 
 -- Dumping database structure for db_donasi_front
-CREATE DATABASE IF NOT EXISTS `db_donasi_front` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+CREATE DATABASE IF NOT EXISTS `db_donasi_front` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `db_donasi_front`;
 
 -- Dumping structure for table db_donasi_front.agenda
@@ -32,9 +32,10 @@ CREATE TABLE IF NOT EXISTS `agenda` (
   `isi` longtext NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id_agenda`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table db_donasi_front.agenda: ~1 rows (approximately)
+-- Dumping data for table db_donasi_front.agenda: ~0 rows (approximately)
+DELETE FROM `agenda`;
 INSERT INTO `agenda` (`id_agenda`, `nama`, `jenis_agenda`, `panitia`, `tempat`, `mulai`, `selesai`, `ringkasan`, `isi`, `tanggal`) VALUES
 	(1, 'Pelantikan Gubernur DKI Jakarta', 'Internal', 'Pusdatin', 'Balai Kota', '2017-09-08', '2017-09-09', 'adada', '<p>adada</p>\r\n', '2017-09-07 18:18:36');
 
@@ -52,9 +53,10 @@ CREATE TABLE IF NOT EXISTS `bagian` (
   PRIMARY KEY (`id_bagian`),
   UNIQUE KEY `kode_bagian` (`kode_bagian`),
   UNIQUE KEY `nama_bagian` (`nama_bagian`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_donasi_front.bagian: ~3 rows (approximately)
+DELETE FROM `bagian`;
 INSERT INTO `bagian` (`id_bagian`, `id_user`, `kode_bagian`, `nama_bagian`, `status_bagian`, `keterangan`, `wilayah`, `tanggal_post`, `tanggal_update`) VALUES
 	(12, 1, 'MARKETING', 'Bagian Pemasaran', 'Aktif', '', '', '2019-04-13 20:10:33', '2019-04-13 06:10:33'),
 	(13, 1, 'KEUANGAN', 'Bagian Keuangan', 'Aktif', '', '', '2019-04-13 20:10:46', '2019-04-13 06:10:46'),
@@ -82,16 +84,26 @@ CREATE TABLE IF NOT EXISTS `berita` (
   `tanggal_publish` datetime NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id_berita`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table db_donasi_front.berita: ~0 rows (approximately)
+-- Dumping data for table db_donasi_front.berita: ~11 rows (approximately)
+DELETE FROM `berita`;
 INSERT INTO `berita` (`id_berita`, `id_user`, `id_kategori`, `updater`, `slug_berita`, `judul_berita`, `isi`, `status_berita`, `jenis_berita`, `keywords`, `gambar`, `icon`, `hits`, `urutan`, `tanggal_mulai`, `tanggal_selesai`, `tanggal_post`, `tanggal_publish`, `tanggal`) VALUES
-	(1, 1, 5, '', 'prototype', 'Prototype', '<p>Prototype</p>', 'Publish', 'Layanan', '', 'Dark_City_Photo_Earth_Hour_Day_Facebook_Post_(2).png', '', 13, 0, NULL, NULL, '2022-11-08 20:39:27', '2022-11-08 20:39:00', '2022-11-17 08:47:06'),
-	(2, 1, 1, '', 'tentang-kami', 'Tentang Kami', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet massa vitae tortor condimentum lacinia quis. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu non diam phasellus vestibulum lorem sed risus ultricies. Nisl nisi scelerisque eu ultrices vitae auctor eu augue ut. Velit ut tortor pretium viverra suspendisse potenti. Sit amet porttitor eget dolor morbi non arcu risus. Eu consequat ac felis donec et odio pellentesque diam. Pellentesque elit ullamcorper dignissim cras. Viverra orci sagittis eu volutpat. Convallis a cras semper auctor neque.</p>\r\n<p>Lorem ipsum dolor sit amet. Fames ac turpis egestas sed tempus urna et pharetra. Placerat in egestas erat imperdiet sed euismod nisi porta. Nulla pellentesque dignissim enim sit amet. Pretium lectus quam id leo in. Egestas egestas fringilla phasellus faucibus. Dui vivamus arcu felis bibendum ut tristique et egestas. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Posuere urna nec tincidunt praesent semper feugiat nibh sed. Libero id faucibus nisl tincidunt. Cras semper auctor neque vitae tempus. In mollis nunc sed id semper risus in hendrerit gravida.</p>', 'Publish', 'Profil', 'tentang donasi', NULL, '', 1, 0, NULL, NULL, '2022-11-17 16:22:25', '2022-11-17 16:21:35', '2022-11-17 09:22:39');
+	(1, 1, 5, '', 'prototype', 'Prototype', '<p>Prototype</p>', 'Publish', 'Layanan', '', 'Dark_City_Photo_Earth_Hour_Day_Facebook_Post_(2).png', '', 17, 0, NULL, NULL, '2022-11-08 20:39:27', '2022-11-08 20:39:00', '2022-12-08 01:30:16'),
+	(2, 1, 1, '', 'tentang-kami', 'Tentang Kami', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet massa vitae tortor condimentum lacinia quis. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu non diam phasellus vestibulum lorem sed risus ultricies. Nisl nisi scelerisque eu ultrices vitae auctor eu augue ut. Velit ut tortor pretium viverra suspendisse potenti. Sit amet porttitor eget dolor morbi non arcu risus. Eu consequat ac felis donec et odio pellentesque diam. Pellentesque elit ullamcorper dignissim cras. Viverra orci sagittis eu volutpat. Convallis a cras semper auctor neque.</p>\r\n<p>Lorem ipsum dolor sit amet. Fames ac turpis egestas sed tempus urna et pharetra. Placerat in egestas erat imperdiet sed euismod nisi porta. Nulla pellentesque dignissim enim sit amet. Pretium lectus quam id leo in. Egestas egestas fringilla phasellus faucibus. Dui vivamus arcu felis bibendum ut tristique et egestas. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Posuere urna nec tincidunt praesent semper feugiat nibh sed. Libero id faucibus nisl tincidunt. Cras semper auctor neque vitae tempus. In mollis nunc sed id semper risus in hendrerit gravida.</p>', 'Publish', 'Profil', 'tentang donasi', NULL, '', 1, 0, NULL, NULL, '2022-11-17 16:22:25', '2022-11-17 16:21:35', '2022-11-17 09:22:39'),
+	(3, 1, 5, '', 'article-1', 'Article 1', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet massa vitae tortor condimentum lacinia quis. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu non diam phasellus vestibulum lorem sed risus ultricies. Nisl nisi scelerisque eu ultrices vitae auctor eu augue ut. Velit ut tortor pretium viverra suspendisse potenti. Sit amet porttitor eget dolor morbi non arcu risus. Eu consequat ac felis donec et odio pellentesque diam. Pellentesque elit ullamcorper dignissim cras. Viverra orci sagittis eu volutpat. Convallis a cras semper auctor neque.</p>\r\n<p>Lorem ipsum dolor sit amet. Fames ac turpis egestas sed tempus urna et pharetra. Placerat in egestas erat imperdiet sed euismod nisi porta. Nulla pellentesque dignissim enim sit amet. Pretium lectus quam id leo in. Egestas egestas fringilla phasellus faucibus. Dui vivamus arcu felis bibendum ut tristique et egestas. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Posuere urna nec tincidunt praesent semper feugiat nibh sed. Libero id faucibus nisl tincidunt. Cras semper auctor neque vitae tempus. In mollis nunc sed id semper risus in hendrerit gravida.</p>', 'Publish', 'Berita', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', '63ccf097dd9c94fa9f7a12b2b2755d42.jpg', '', 0, 4, NULL, NULL, '2022-11-23 22:54:46', '2022-11-23 22:42:59', '2022-11-23 15:54:46'),
+	(4, 1, 6, '', 'article-2', 'Article 2', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet massa vitae tortor condimentum lacinia quis. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu non diam phasellus vestibulum lorem sed risus ultricies. Nisl nisi scelerisque eu ultrices vitae auctor eu augue ut. Velit ut tortor pretium viverra suspendisse potenti. Sit amet porttitor eget dolor morbi non arcu risus. Eu consequat ac felis donec et odio pellentesque diam. Pellentesque elit ullamcorper dignissim cras. Viverra orci sagittis eu volutpat. Convallis a cras semper auctor neque.</p>\r\n<p>Lorem ipsum dolor sit amet. Fames ac turpis egestas sed tempus urna et pharetra. Placerat in egestas erat imperdiet sed euismod nisi porta. Nulla pellentesque dignissim enim sit amet. Pretium lectus quam id leo in. Egestas egestas fringilla phasellus faucibus. Dui vivamus arcu felis bibendum ut tristique et egestas. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Posuere urna nec tincidunt praesent semper feugiat nibh sed. Libero id faucibus nisl tincidunt. Cras semper auctor neque vitae tempus. In mollis nunc sed id semper risus in hendrerit gravida.</p>', 'Publish', 'Berita', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt', 'pencil1627531878.jpg', '', 3, 2, NULL, NULL, '2022-11-23 22:55:40', '2022-11-23 22:55:16', '2022-11-29 07:56:16'),
+	(5, 1, 6, '', 'article-3', 'Article 3', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet massa vitae tortor condimentum lacinia quis. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu non diam phasellus vestibulum lorem sed risus ultricies. Nisl nisi scelerisque eu ultrices vitae auctor eu augue ut. Velit ut tortor pretium viverra suspendisse potenti. Sit amet porttitor eget dolor morbi non arcu risus. Eu consequat ac felis donec et odio pellentesque diam. Pellentesque elit ullamcorper dignissim cras. Viverra orci sagittis eu volutpat. Convallis a cras semper auctor neque.</p>\r\n<p>Lorem ipsum dolor sit amet. Fames ac turpis egestas sed tempus urna et pharetra. Placerat in egestas erat imperdiet sed euismod nisi porta. Nulla pellentesque dignissim enim sit amet. Pretium lectus quam id leo in. Egestas egestas fringilla phasellus faucibus. Dui vivamus arcu felis bibendum ut tristique et egestas. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Posuere urna nec tincidunt praesent semper feugiat nibh sed. Libero id faucibus nisl tincidunt. Cras semper auctor neque vitae tempus. In mollis nunc sed id semper risus in hendrerit gravida.</p>', 'Publish', 'Berita', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ', 'pencil16275318781.jpg', '', 0, 0, NULL, NULL, '2022-11-23 22:57:34', '2022-11-23 22:56:50', '2022-11-23 15:57:34'),
+	(6, 1, 6, '', 'article-4', 'Article 4', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet massa vitae tortor condimentum lacinia quis. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu non diam phasellus vestibulum lorem sed risus ultricies. Nisl nisi scelerisque eu ultrices vitae auctor eu augue ut. Velit ut tortor pretium viverra suspendisse potenti. Sit amet porttitor eget dolor morbi non arcu risus. Eu consequat ac felis donec et odio pellentesque diam. Pellentesque elit ullamcorper dignissim cras. Viverra orci sagittis eu volutpat. Convallis a cras semper auctor neque.</p>\r\n<p>Lorem ipsum dolor sit amet. Fames ac turpis egestas sed tempus urna et pharetra. Placerat in egestas erat imperdiet sed euismod nisi porta. Nulla pellentesque dignissim enim sit amet. Pretium lectus quam id leo in. Egestas egestas fringilla phasellus faucibus. Dui vivamus arcu felis bibendum ut tristique et egestas. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Posuere urna nec tincidunt praesent semper feugiat nibh sed. Libero id faucibus nisl tincidunt. Cras semper auctor neque vitae tempus. In mollis nunc sed id semper risus in hendrerit gravida.</p>', 'Publish', 'Berita', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ', '63ccf097dd9c94fa9f7a12b2b2755d421.jpg', '', 1, 6, NULL, NULL, '2022-11-23 22:58:01', '2022-11-23 22:57:39', '2022-11-25 07:03:57'),
+	(7, 1, 6, '', 'article-5', 'Article 5', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet massa vitae tortor condimentum lacinia quis. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu non diam phasellus vestibulum lorem sed risus ultricies. Nisl nisi scelerisque eu ultrices vitae auctor eu augue ut. Velit ut tortor pretium viverra suspendisse potenti. Sit amet porttitor eget dolor morbi non arcu risus. Eu consequat ac felis donec et odio pellentesque diam. Pellentesque elit ullamcorper dignissim cras. Viverra orci sagittis eu volutpat. Convallis a cras semper auctor neque.</p>\r\n<p>Lorem ipsum dolor sit amet. Fames ac turpis egestas sed tempus urna et pharetra. Placerat in egestas erat imperdiet sed euismod nisi porta. Nulla pellentesque dignissim enim sit amet. Pretium lectus quam id leo in. Egestas egestas fringilla phasellus faucibus. Dui vivamus arcu felis bibendum ut tristique et egestas. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Posuere urna nec tincidunt praesent semper feugiat nibh sed. Libero id faucibus nisl tincidunt. Cras semper auctor neque vitae tempus. In mollis nunc sed id semper risus in hendrerit gravida.</p>', 'Publish', 'Berita', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', '63ccf097dd9c94fa9f7a12b2b2755d422.jpg', '', 11, 10, NULL, NULL, '2022-11-23 22:59:13', '2022-11-23 22:58:42', '2022-12-08 02:14:46'),
+	(8, 2, 6, '', 'qweqw', 'qweqw', '<p>qweqwe</p>', 'Publish', 'Berita', 'qweqw', '63ccf097dd9c94fa9f7a12b2b2755d4221.jpg', 'qewqwe', 0, 3, NULL, NULL, '2022-12-07 15:45:21', '2022-12-07 00:00:00', '2022-12-07 09:04:09'),
+	(9, 2, 6, '', 'rytr', 'rytr', '<p>ryhfy</p>', 'Publish', 'Berita', 'tyu', 'Dark_City_Photo_Earth_Hour_Day_Facebook_Post_(2)1.png', 'rtyt', 0, 7, NULL, NULL, '2022-12-07 15:55:18', '2022-12-07 00:00:00', '2022-12-07 09:03:47'),
+	(10, 1, 7, '', 'program-remaja', 'Program Remaja', '<p>asdasd</p>', 'Publish', 'Berita', 'asda', '63ccf097dd9c94fa9f7a12b2b2755d423.jpg', '', 1, 0, NULL, NULL, '2022-12-08 08:43:47', '2022-12-08 00:00:00', '2022-12-08 02:12:51'),
+	(11, 1, 8, '', 'program-relawan-122', 'Program Relawan 122', '<p>asdasd</p>', 'Publish', 'Berita', 'asd', '63ccf097dd9c94fa9f7a12b2b2755d42211.jpg', '', 2, 0, NULL, NULL, '2022-12-08 09:10:57', '2022-12-08 09:10:30', '2022-12-08 02:15:32');
 
 -- Dumping structure for table db_donasi_front.client
 CREATE TABLE IF NOT EXISTS `client` (
-  `id_client` int(11) NOT NULL,
+  `id_client` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) DEFAULT NULL,
   `jenis_client` enum('Perorangan','Perusahaan','Organisasi') NOT NULL,
   `nama` varchar(255) NOT NULL,
@@ -115,12 +127,20 @@ CREATE TABLE IF NOT EXISTS `client` (
   `tanggal_lahir` date DEFAULT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id_client`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table db_donasi_front.client: ~2 rows (approximately)
+-- Dumping data for table db_donasi_front.client: ~9 rows (approximately)
+DELETE FROM `client`;
 INSERT INTO `client` (`id_client`, `id_user`, `jenis_client`, `nama`, `pimpinan`, `alamat`, `telepon`, `website`, `email`, `password`, `password_hint`, `isi`, `status_testimoni`, `isi_testimoni`, `gambar`, `status_client`, `keywords`, `status_baca`, `status_siswa`, `ip_address`, `tempat_lahir`, `tanggal_lahir`, `tanggal`) VALUES
-	(2, 1, 'Perorangan', 'PT Java Web Media', 'Bapak Andoyo', 'Jalan Lapangan Banteng Barat No. 3-4\r\nTromol Pos 3500', '', '', 'javawebmedia@gmail.com', '8242de3f241790a591666ac9f6ad6be377c8a43f', 'wrygldyt', NULL, 'No', '', NULL, 'No', '', 'Sudah', 'Aktif', '', 'JAKARTA', '1962-01-02', '2019-04-13 18:08:26'),
-	(3, 1, 'Perorangan', 'PT Indosat Sukses  Makmur', 'Eflita Meiyetriani', '', '0813 8841 0829', '', 'admin@kabupatenlestari.org', NULL, NULL, NULL, 'No', '', NULL, 'No', '', 'Sudah', 'Aktif', '', '', '1970-01-01', '2019-04-13 20:35:03');
+	(1, 1, 'Perorangan', 'PT ABC', 'Mr ABC', '', '', '', '', NULL, NULL, NULL, 'No', '', 'cash-flow.png', 'No', '', 'Sudah', 'Aktif', '', '', '1970-01-01', '2022-11-25 03:24:30'),
+	(2, 1, 'Perorangan', 'PT Java Web Media', 'Bapak Andoyo', 'Jalan Lapangan Banteng Barat No. 3-4\r\nTromol Pos 3500', '', '', 'javawebmedia@gmail.com', '8242de3f241790a591666ac9f6ad6be377c8a43f', 'wrygldyt', NULL, 'No', '', 'banking.png', 'No', '', 'Sudah', 'Aktif', '', 'JAKARTA', '1962-01-02', '2022-11-25 02:59:30'),
+	(3, 1, 'Perorangan', 'PT Indosat Sukses  Makmur', 'Eflita Meiyetriani', '', '0813 8841 0829', '', 'admin@kabupatenlestari.org', NULL, NULL, NULL, 'No', '', 'bitcoin.png', 'No', '', 'Sudah', 'Aktif', '', '', '1970-01-01', '2022-11-25 02:57:42'),
+	(4, 1, 'Perorangan', 'PT ABCCC', 'Mr ABCCC', '', '', '', '', NULL, NULL, NULL, 'No', '', 'transaction1.png', 'No', '', 'Sudah', 'Aktif', '', '', '1970-01-01', '2022-11-25 03:26:03'),
+	(5, 1, 'Perorangan', 'PT ABA', 'Mr ABA', '', '', '', '', NULL, NULL, NULL, 'No', '', 'transaction_(1)1.png', 'No', '', 'Sudah', 'Aktif', '', '', '1970-01-01', '2022-11-25 03:26:19'),
+	(6, 1, 'Perorangan', 'PT ABCCCDF', 'Mr ABCCCD', '', '', '', '', NULL, NULL, NULL, 'No', '', 'transaction2.png', 'No', '', 'Sudah', 'Aktif', '', '', '1970-01-01', '2022-11-25 03:26:57'),
+	(7, 1, 'Perorangan', 'Cliet 1', 'sdsad', '', '', '', '', NULL, NULL, NULL, 'No', '', 'google-analytics.png', 'No', '', 'Sudah', 'Aktif', '', '', '1970-01-01', '2022-11-25 08:31:14'),
+	(8, 1, 'Perorangan', 'dasd', 'asdasd', '', '', '', '', NULL, NULL, NULL, 'No', '', 'search.png', 'No', '', 'Sudah', 'Aktif', '', '', '1970-01-01', '2022-11-25 08:31:22'),
+	(9, 1, 'Perorangan', 'wrewer', 'rteter', '', '', '', '', NULL, NULL, NULL, 'No', '', 'web-analytics.png', 'No', '', 'Sudah', 'Aktif', '', '', '1970-01-01', '2022-11-25 08:31:31');
 
 -- Dumping structure for table db_donasi_front.download
 CREATE TABLE IF NOT EXISTS `download` (
@@ -135,9 +155,10 @@ CREATE TABLE IF NOT EXISTS `download` (
   `hits` int(11) NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id_download`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_donasi_front.download: ~0 rows (approximately)
+DELETE FROM `download`;
 
 -- Dumping structure for table db_donasi_front.galeri
 CREATE TABLE IF NOT EXISTS `galeri` (
@@ -155,13 +176,16 @@ CREATE TABLE IF NOT EXISTS `galeri` (
   `status_text` enum('Ya','Tidak','','') NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id_galeri`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table db_donasi_front.galeri: ~3 rows (approximately)
+-- Dumping data for table db_donasi_front.galeri: ~5 rows (approximately)
+DELETE FROM `galeri`;
 INSERT INTO `galeri` (`id_galeri`, `id_kategori_galeri`, `id_user`, `judul_galeri`, `jenis_galeri`, `isi`, `gambar`, `website`, `hits`, `popup_status`, `urutan`, `status_text`, `tanggal`) VALUES
-	(1, 5, 1, 'Test', 'Homepage', '<p>Test</p>', 'mobil-221.jpg', '', NULL, 'Publish', 2, 'Ya', '2022-11-17 18:08:28'),
-	(9, 5, 1, 'Prototype - 2', 'Homepage', '<p>Prototype - 2</p>', 'mobil-21.jpg', '', 9, 'Publish', 1, 'Ya', '2022-11-17 18:08:17'),
-	(10, 5, 1, 'A picture is worth a thousand words', 'Homepage', '<p>A picture is worth a thousand words</p>', 'adi-goldstein-JTlwuJblZdk-unsplash.jpg', '', NULL, 'Publish', 3, 'Ya', '2022-11-17 18:36:05');
+	(1, 5, 1, 'Slider Slider One', 'Homepage', '<p>Slider Slider One</p>', 'mobil-221.jpg', '', NULL, 'Publish', 2, 'Tidak', '2022-11-23 15:41:12'),
+	(9, 5, 1, 'Slider Slider Two', 'Homepage', '<p>Slider Slider Two</p>', 'mobil-21.jpg', '', 9, 'Publish', 1, 'Ya', '2022-11-23 15:41:27'),
+	(10, 5, 1, 'A picture is worth a thousand words', 'Homepage', '<p>A picture is worth a thousand words</p>', 'adi-goldstein-JTlwuJblZdk-unsplash.jpg', '', NULL, 'Publish', 3, 'Ya', '2022-11-17 18:36:05'),
+	(11, 5, 1, 'A picture is worth a thousand words', 'Homepage', '<p>A picture is worth a thousand words</p>', 'yu-hong-lee-tGj1jO0ImKM-unsplash.jpg', '', NULL, 'Publish', 4, 'Ya', '2022-11-25 08:45:20'),
+	(12, 5, 1, 'A picture is worth a thousand words', 'Homepage', '<p>A picture is worth a thousand words</p>', 'yeh-che-wei-TWxB8pT5eHs-unsplash.jpg', '', NULL, 'Publish', 5, 'Ya', '2022-11-23 15:41:56');
 
 -- Dumping structure for table db_donasi_front.kategori
 CREATE TABLE IF NOT EXISTS `kategori` (
@@ -173,14 +197,17 @@ CREATE TABLE IF NOT EXISTS `kategori` (
   `hits` int(11) NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id_kategori`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table db_donasi_front.kategori: ~3 rows (approximately)
+-- Dumping data for table db_donasi_front.kategori: ~6 rows (approximately)
+DELETE FROM `kategori`;
 INSERT INTO `kategori` (`id_kategori`, `id_user`, `slug_kategori`, `nama_kategori`, `urutan`, `hits`, `tanggal`) VALUES
 	(1, 1, 'about', 'about', 6, 0, '2022-11-17 09:08:17'),
 	(4, 1, 'penelitian', 'Penelitian', 4, 0, '2019-03-03 18:31:22'),
 	(5, 1, 'kegiatan', 'Kegiatan', 5, 0, '2019-03-03 18:31:06'),
-	(6, 1, 'peta', 'peta', 7, 0, '2022-11-17 09:13:14');
+	(6, 1, 'peta', 'peta', 7, 0, '2022-11-17 09:13:14'),
+	(7, 2, 'program-remaja', 'Program Remaja', 8, 0, '2022-12-08 01:33:03'),
+	(8, 2, 'program-relawan', 'Program Relawan', 9, 0, '2022-12-08 01:33:18');
 
 -- Dumping structure for table db_donasi_front.kategori_download
 CREATE TABLE IF NOT EXISTS `kategori_download` (
@@ -189,9 +216,10 @@ CREATE TABLE IF NOT EXISTS `kategori_download` (
   `nama_kategori_download` varchar(255) NOT NULL,
   `urutan` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_kategori_download`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_donasi_front.kategori_download: ~2 rows (approximately)
+DELETE FROM `kategori_download`;
 INSERT INTO `kategori_download` (`id_kategori_download`, `slug_kategori_download`, `nama_kategori_download`, `urutan`) VALUES
 	(1, 'formulir-pendaftaran', 'Formulir Pendaftaran', 1),
 	(2, 'promosi-java-web-media', 'Promosi Java Web Media', 2);
@@ -202,13 +230,15 @@ CREATE TABLE IF NOT EXISTS `kategori_galeri` (
   `slug_kategori_galeri` varchar(255) NOT NULL,
   `nama_kategori_galeri` varchar(255) NOT NULL,
   `urutan` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table db_donasi_front.kategori_galeri: ~2 rows (approximately)
+-- Dumping data for table db_donasi_front.kategori_galeri: ~3 rows (approximately)
+DELETE FROM `kategori_galeri`;
 INSERT INTO `kategori_galeri` (`id_kategori_galeri`, `slug_kategori_galeri`, `nama_kategori_galeri`, `urutan`) VALUES
 	(4, 'kegiatan', 'Kegiatan', 4),
 	(5, 'banner-website', 'Banner Website', 4),
-	(0, 'donasi', 'Donasi', 5);
+	(0, 'donasi', 'Donasi', 5),
+	(0, 'about', 'About', 6);
 
 -- Dumping structure for table db_donasi_front.kategori_staff
 CREATE TABLE IF NOT EXISTS `kategori_staff` (
@@ -216,9 +246,10 @@ CREATE TABLE IF NOT EXISTS `kategori_staff` (
   `slug_kategori_staff` varchar(255) NOT NULL,
   `nama_kategori_staff` varchar(255) NOT NULL,
   `urutan` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_donasi_front.kategori_staff: ~2 rows (approximately)
+DELETE FROM `kategori_staff`;
 INSERT INTO `kategori_staff` (`id_kategori_staff`, `slug_kategori_staff`, `nama_kategori_staff`, `urutan`) VALUES
 	(1, 'pejabat-eselon-1', 'Pejabat Eselon 1', 1),
 	(2, 'pejabat-struktural', 'Pejabat Struktural', 2);
@@ -290,9 +321,10 @@ CREATE TABLE IF NOT EXISTS `konfigurasi` (
   `smtp_pass` text NOT NULL,
   `id_user` int(11) NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_donasi_front.konfigurasi: ~0 rows (approximately)
+DELETE FROM `konfigurasi`;
 INSERT INTO `konfigurasi` (`id_konfigurasi`, `namaweb`, `singkatan`, `tagline`, `tentang`, `deskripsi`, `website`, `email`, `email_cadangan`, `alamat`, `telepon`, `hp`, `fax`, `logo`, `icon`, `footer`, `keywords`, `metatext`, `facebook`, `twitter`, `instagram`, `google_plus`, `google_map`, `judul_1`, `pesan_1`, `judul_2`, `pesan_2`, `judul_3`, `pesan_3`, `judul_4`, `pesan_4`, `judul_5`, `pesan_5`, `judul_6`, `pesan_6`, `isi_1`, `isi_2`, `isi_3`, `isi_4`, `isi_5`, `isi_6`, `link_1`, `link_2`, `link_3`, `link_4`, `link_5`, `link_6`, `javawebmedia`, `gambar`, `video`, `rekening`, `gambar_berita`, `status_form_booking`, `max_room_booking`, `nama_direktur`, `jabatan`, `stempel_tanda_tangan`, `protocol`, `smtp_host`, `smtp_port`, `smtp_timeout`, `smtp_user`, `smtp_pass`, `id_user`, `tanggal`) VALUES
 	(1, 'Prototype', 'Prototype', 'Prototype', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet massa vitae tortor condimentum lacinia quis. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu non diam phasellus vestibulum lorem sed risus ultricies. Nisl nisi scelerisque eu ultrices vitae auctor eu augue ut. Velit ut tortor pretium viverra suspendisse potenti. Sit amet porttitor eget dolor morbi non arcu risus. Eu consequat ac felis donec et odio pellentesque diam. Pellentesque elit ullamcorper dignissim cras. Viverra orci sagittis eu volutpat. Convallis a cras semper auctor neque.</p>\r\n<p>Lorem ipsum dolor sit amet. Fames ac turpis egestas sed tempus urna et pharetra. Placerat in egestas erat imperdiet sed euismod nisi porta. Nulla pellentesque dignissim enim sit amet. Pretium lectus quam id leo in. Egestas egestas fringilla phasellus faucibus. Dui vivamus arcu felis bibendum ut tristique et egestas. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Posuere urna nec tincidunt praesent semper feugiat nibh sed. Libero id faucibus nisl tincidunt. Cras semper auctor neque vitae tempus. In mollis nunc sed id semper risus in hendrerit gravida.</p>', 'Hotel Bumi Wiyata is a three stars hotel that located on Jl. Margonda Raya Depok 16423 West Java.Ã‚Â \r\n\r\nHotel Bumi Wiyata has 13 ha areas and 91 Rooms which divided into six types of room; Standard Room, Superior Room, Deluxe Superior Room, Suite Room, Deluxe Suite Room & Executive Room.\r\n\r\nHotel Bumi Wiyata is the perfect choice for your business activity, gathering, wedding, outbound and family. With the concept of the greatest hotel for recreational meeting surrounding with traditional nature, various facilities and warm hospitality will makes all your event become a memorable one.', 'http://Prototypea.com', 'contact@Prototype.com', 'bmwiyata@hotelbumiwiyata.com', '<p>Jl. Raya Senayan No. 113, Kebayoran Baru, South Jakarta City, Jakarta</p>', '+6285715100485', '+6281210697841', '+6285715100485', 'helping-hand.png', 'npr-commission-2-final-revised-crop-abortion_wide-b56a06f1a6595320f160c6ed1088c1d232f128b5-s1100-c502.jpg', 'footer1.png', 'Prototype', 'Prototype', 'https://www.facebook.com/Prototype', 'http://twitter.com/Prototype', 'https://instagram.com/Prototype', 'https://www.youtube.com/channel/UCmm6mFZXYQ3ZylUMa0Tmc2Q', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7932.565032041253!2d106.8041436739772!3d-6.2264329319711615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1505c74e905%3A0xaed2653b260f21a5!2sSenayan%2C%20Kebayoran%20Baru%2C%20South%20Jakarta%20City%2C%20Jakarta!5e0!3m2!1sen!2sid!4v1668685577985!5m2!1sen!2sid" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>', 'Bersedekah untuk anak yatim', 'fa-money', 'Pengasuh yang santun', 'fa-thumbs-up', 'Jadwal Flexibel', 'fa-adn', 'Menjaga Amanah', 'fa-check-square-o', 'Tempat belajar nyaman', 'fa-home', 'Online service', 'fa-laptop', 'Berbagi kebahagiaan dengan anak yatim adalah perintah Allah dan rasul', 'Pengasuh yang baik dan santun serta memberikan teladan yang baik bagi anak asuh', 'Bagi Anda siswa yang ingin belajar, kami menerapkan jadwal flexibel', 'Kami senantiasa menjaga amanah yang diberikan kepada donatur agar sampai di tangan yang berhak.', 'Kami menyediakan tempat belajar yang nyaman dan menyenangkan', 'Website kamu selalu uptodate, Anda bisa mengunduh apa yang dipelajari', '', '', '', '', '', '', '<p>Berawal dari keinginan ibunda Hj.Masah Muhari diakhir hidupnya untuk mewakaan sebagian hartanya dijalan Allah, gayungpun bersambut pada bulan Mei 2011 saat kami akan melaksanakan ibadah umrah, Seorang rekan kami sesama Jamaah bernama ustadzah Hj. Zainur Fahmid memberikan informasi Tentang Anggota yang hendak mewakaan sebidang tanahnya di wilayah Beji Timur. Kami pun memanjatkan doa di kota suci dengan penuh rasa harap pertolongan Allah untuk menunjukan jalan terbaik-Nya, maka sepulang umroh kami mengadakan pertemuan di kediaman Ibu Dra Hj Ratna Mardjanah untuk membicarakan visi misi kami dalam wakaf tersebut dan sepakat untuk mendirikan Istana Yatim Riyadhul Jannah ini.</p>\r\n<p>Nama Riyadhul Jannah Sendiri diambil dari nama pengelola wakaf (H. Ahmad Riyadh Muchtar, Lc) dan pemberi wakaf (Dra Hj Ratna Mardjanah). Istana Yatim Riyadhul Jannah hadir untuk melayani dan memfasilitasi segala kebutuhan anak yatim, terutama pendidikan agama, akhlak dan kehidupan yang layak untuk bekal masa depan mereka yang cerah agar bisa memberi manfaat bagi umat. Harapan kami semoga dengan membangunkan istana untuk anak yatim, maka Allah akan berikan istana-Nya di surga kelak dan kita termasuk manusia yang bisa memberika manfaat bagi sesama sebagaimana sabda Rasulullah SAW yang artinya:&nbsp;</p>\r\n<p>&ldquo;Sebaik-baik manusia adalah yang paling bermanfaat bagi manusia lainnya&rdquo;&nbsp;</p>\r\n<p>erimakasih atas segala bentuk bantuan yang dipercayakan kepada kami baik secara materi, tenaga dan kiran serta doa para muhsinin dan muhsinat Istana Yatim Riyadhul Jannah selama ini, mulai dari rencana pendirian hingga berkembang seperti saat ini. Semoga segala amal menjadi shadaqah jariyah disisi-Nya.&nbsp;</p>\r\n<p>&nbsp;</p>', 'istana-yatim.png', 'fsH_KhUWfho', '<table id="dataTables-example" class="table table-bordered" width="100%">\r\n<thead>\r\n<tr>\r\n<th tabindex="0" colspan="1" rowspan="1" width="19%">Nama Bank</th>\r\n<th tabindex="0" colspan="1" rowspan="1" width="21%">Nomor Rekening</th>\r\n<th tabindex="0" colspan="1" rowspan="1" width="7%">Atas nama</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>BCA KCP Margo City</td>\r\n<td>4212548204</td>\r\n<td>Andoyo</td>\r\n</tr>\r\n<tr>\r\n<td>Bank Mandiri KCP Universitas Indonesia</td>\r\n<td>1570001807768</td>\r\n<td>Eflita Meiyetriani</td>\r\n</tr>\r\n<tr>\r\n<td>Bank BNI Syariah Kantor Cabang Jakarta Selatan</td>\r\n<td>0105301001</td>\r\n<td>Eflita Meiyetriani</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'balairung-budiutomo-01.jpg', 'Aktif', 3, 'Sigit Yuwono Wachid', 'Direktur', 'tanda-tangan-nba.png', 'smtp', 'ssl://mail.websitemu.com', 465, 7, 'contact@websitemu.com', 'muhammad', 0, '2022-11-17 12:42:42');
 
@@ -304,9 +336,10 @@ CREATE TABLE IF NOT EXISTS `kunjungan` (
   `hari` date DEFAULT NULL,
   `waktu` datetime NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table db_donasi_front.kunjungan: ~866 rows (approximately)
+-- Dumping data for table db_donasi_front.kunjungan: ~1,004 rows (approximately)
+DELETE FROM `kunjungan`;
 INSERT INTO `kunjungan` (`id_kunjungan`, `alamat`, `ip_address`, `hari`, `waktu`, `tanggal`) VALUES
 	(1, 'http://localhost/bkkbn/masuk', '127.0.0.1', '2019-02-23', '2019-02-23 12:38:06', '2019-02-22 22:38:06'),
 	(2, 'http://localhost/bkkbn/masuk', '127.0.0.1', '2019-02-23', '2019-02-23 14:06:56', '2019-02-23 00:06:56'),
@@ -1200,7 +1233,545 @@ INSERT INTO `kunjungan` (`id_kunjungan`, `alamat`, `ip_address`, `hari`, `waktu`
 	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-18', '2022-11-18 05:14:24', '2022-11-17 22:14:24'),
 	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-18', '2022-11-18 07:16:43', '2022-11-18 00:16:43'),
 	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-18', '2022-11-18 07:18:33', '2022-11-18 00:18:33'),
-	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 08:43:30', '2022-11-23 01:43:30');
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 08:43:30', '2022-11-23 01:43:30'),
+	(0, 'http://localhost/donasi-front/galeri', '::1', '2022-11-23', '2022-11-23 08:45:57', '2022-11-23 01:45:57'),
+	(0, 'http://localhost/donasi-front/video', '::1', '2022-11-23', '2022-11-23 08:46:01', '2022-11-23 01:46:01'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 08:46:05', '2022-11-23 01:46:05'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 08:46:37', '2022-11-23 01:46:37'),
+	(0, 'http://localhost/donasi-front/video', '::1', '2022-11-23', '2022-11-23 08:46:39', '2022-11-23 01:46:39'),
+	(0, 'http://localhost/donasi-front/galeri', '::1', '2022-11-23', '2022-11-23 08:47:20', '2022-11-23 01:47:20'),
+	(0, 'http://localhost/donasi-front/video', '::1', '2022-11-23', '2022-11-23 08:47:27', '2022-11-23 01:47:27'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 08:47:30', '2022-11-23 01:47:30'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 08:48:10', '2022-11-23 01:48:10'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 08:58:48', '2022-11-23 01:58:48'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:05:44', '2022-11-23 02:05:44'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:05:49', '2022-11-23 02:05:49'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:07:15', '2022-11-23 02:07:15'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:11:11', '2022-11-23 02:11:11'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:12:27', '2022-11-23 02:12:27'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:13:13', '2022-11-23 02:13:13'),
+	(0, 'http://localhost/donasi-front/peta', '::1', '2022-11-23', '2022-11-23 09:15:47', '2022-11-23 02:15:47'),
+	(0, 'http://localhost/donasi-front/galeri', '::1', '2022-11-23', '2022-11-23 09:15:51', '2022-11-23 02:15:51'),
+	(0, 'http://localhost/donasi-front/download', '::1', '2022-11-23', '2022-11-23 09:15:55', '2022-11-23 02:15:55'),
+	(0, 'http://localhost/donasi-front/download', '::1', '2022-11-23', '2022-11-23 09:19:21', '2022-11-23 02:19:21'),
+	(0, 'http://localhost/donasi-front/download', '::1', '2022-11-23', '2022-11-23 09:20:26', '2022-11-23 02:20:26'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:20:43', '2022-11-23 02:20:43'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:22:32', '2022-11-23 02:22:32'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:23:01', '2022-11-23 02:23:01'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:23:03', '2022-11-23 02:23:03'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:23:23', '2022-11-23 02:23:23'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:23:26', '2022-11-23 02:23:26'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:23:50', '2022-11-23 02:23:50'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:24:42', '2022-11-23 02:24:42'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:25:54', '2022-11-23 02:25:54'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-11-23', '2022-11-23 09:27:27', '2022-11-23 02:27:27'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 09:27:31', '2022-11-23 02:27:31'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 11:41:49', '2022-11-23 04:41:49'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 11:45:43', '2022-11-23 04:45:43'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:21:24', '2022-11-23 06:21:24'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:25:22', '2022-11-23 06:25:22'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:26:07', '2022-11-23 06:26:07'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:28:16', '2022-11-23 06:28:16'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:29:15', '2022-11-23 06:29:15'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:29:57', '2022-11-23 06:29:57'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:30:35', '2022-11-23 06:30:35'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:31:58', '2022-11-23 06:31:58'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:32:20', '2022-11-23 06:32:20'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:32:21', '2022-11-23 06:32:21'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:40:35', '2022-11-23 06:40:35'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:43:55', '2022-11-23 06:43:55'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:44:45', '2022-11-23 06:44:45'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:45:21', '2022-11-23 06:45:21'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:48:58', '2022-11-23 06:48:58'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:50:05', '2022-11-23 06:50:05'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 13:51:15', '2022-11-23 06:51:15'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 14:17:41', '2022-11-23 07:17:41'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 14:18:20', '2022-11-23 07:18:20'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 14:22:07', '2022-11-23 07:22:07'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 14:22:21', '2022-11-23 07:22:21'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 14:23:15', '2022-11-23 07:23:15'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 14:24:33', '2022-11-23 07:24:33'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 14:25:00', '2022-11-23 07:25:00'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 14:25:16', '2022-11-23 07:25:16'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 14:30:44', '2022-11-23 07:30:44'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 14:33:37', '2022-11-23 07:33:37'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 14:49:52', '2022-11-23 07:49:52'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 14:51:11', '2022-11-23 07:51:11'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 14:52:18', '2022-11-23 07:52:18'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:24:19', '2022-11-23 10:24:19'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:25:44', '2022-11-23 10:25:44'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:28:22', '2022-11-23 10:28:22'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:28:58', '2022-11-23 10:28:58'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:30:03', '2022-11-23 10:30:03'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:31:00', '2022-11-23 10:31:00'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:32:20', '2022-11-23 10:32:20'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:34:22', '2022-11-23 10:34:22'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:35:06', '2022-11-23 10:35:06'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:37:43', '2022-11-23 10:37:43'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:37:54', '2022-11-23 10:37:54'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:38:16', '2022-11-23 10:38:16'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:39:24', '2022-11-23 10:39:24'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:40:48', '2022-11-23 10:40:48'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:51:43', '2022-11-23 10:51:43'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 17:55:01', '2022-11-23 10:55:01'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 18:56:39', '2022-11-23 11:56:39'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 18:59:06', '2022-11-23 11:59:06'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 19:00:17', '2022-11-23 12:00:17'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 19:00:57', '2022-11-23 12:00:57'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 19:01:27', '2022-11-23 12:01:27'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 19:08:06', '2022-11-23 12:08:06'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 19:12:24', '2022-11-23 12:12:24'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 19:19:57', '2022-11-23 12:19:57'),
+	(0, 'http://localhost/donasi-front/peta', '::1', '2022-11-23', '2022-11-23 21:09:44', '2022-11-23 14:09:44'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-11-23', '2022-11-23 21:09:48', '2022-11-23 14:09:48'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 21:09:53', '2022-11-23 14:09:53'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 21:12:26', '2022-11-23 14:12:26'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 21:13:42', '2022-11-23 14:13:42'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 21:18:24', '2022-11-23 14:18:24'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 21:19:58', '2022-11-23 14:19:58'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 21:21:22', '2022-11-23 14:21:22'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 21:24:21', '2022-11-23 14:24:21'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 21:51:15', '2022-11-23 14:51:15'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 21:52:58', '2022-11-23 14:52:58'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:28:57', '2022-11-23 15:28:57'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:29:26', '2022-11-23 15:29:26'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:31:02', '2022-11-23 15:31:02'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:31:02', '2022-11-23 15:31:02'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:32:25', '2022-11-23 15:32:25'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:33:19', '2022-11-23 15:33:19'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:34:04', '2022-11-23 15:34:04'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:35:06', '2022-11-23 15:35:06'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:37:11', '2022-11-23 15:37:11'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:38:14', '2022-11-23 15:38:14'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:38:59', '2022-11-23 15:38:59'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:39:36', '2022-11-23 15:39:36'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:42:00', '2022-11-23 15:42:00'),
+	(0, 'http://localhost/donasi-front/berita/layanan/prototype', '::1', '2022-11-23', '2022-11-23 22:42:28', '2022-11-23 15:42:28'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:42:31', '2022-11-23 15:42:31'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:43:15', '2022-11-23 15:43:15'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:54:58', '2022-11-23 15:54:58'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:55:52', '2022-11-23 15:55:52'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:56:22', '2022-11-23 15:56:22'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:56:35', '2022-11-23 15:56:35'),
+	(0, 'http://localhost/donasi-front/berita/read/article-2', '::1', '2022-11-23', '2022-11-23 22:57:08', '2022-11-23 15:57:08'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:58:05', '2022-11-23 15:58:05'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 22:59:17', '2022-11-23 15:59:17'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-23', '2022-11-23 23:00:19', '2022-11-23 16:00:19'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 08:12:18', '2022-11-24 01:12:18'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 08:13:42', '2022-11-24 01:13:42'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 08:17:35', '2022-11-24 01:17:35'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 08:18:59', '2022-11-24 01:18:59'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 08:20:29', '2022-11-24 01:20:29'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 08:24:47', '2022-11-24 01:24:47'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 08:33:01', '2022-11-24 01:33:01'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 08:33:54', '2022-11-24 01:33:54'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:39:22', '2022-11-24 06:39:22'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:41:53', '2022-11-24 06:41:53'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:42:16', '2022-11-24 06:42:16'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:42:41', '2022-11-24 06:42:41'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:43:07', '2022-11-24 06:43:07'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:48:13', '2022-11-24 06:48:13'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:48:54', '2022-11-24 06:48:54'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:49:19', '2022-11-24 06:49:19'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:49:25', '2022-11-24 06:49:25'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:51:41', '2022-11-24 06:51:41'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:52:30', '2022-11-24 06:52:30'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:52:58', '2022-11-24 06:52:58'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:55:03', '2022-11-24 06:55:03'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:58:10', '2022-11-24 06:58:10'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:58:33', '2022-11-24 06:58:33'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 13:59:46', '2022-11-24 06:59:46'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:00:46', '2022-11-24 07:00:46'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:00:58', '2022-11-24 07:00:58'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:02:19', '2022-11-24 07:02:19'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:02:35', '2022-11-24 07:02:35'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:03:09', '2022-11-24 07:03:09'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:04:27', '2022-11-24 07:04:27'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:05:58', '2022-11-24 07:05:58'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:07:44', '2022-11-24 07:07:44'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:08:19', '2022-11-24 07:08:19'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:09:48', '2022-11-24 07:09:48'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:10:25', '2022-11-24 07:10:25'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:11:13', '2022-11-24 07:11:13'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:11:29', '2022-11-24 07:11:29'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:11:41', '2022-11-24 07:11:41'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:14:24', '2022-11-24 07:14:24'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:16:13', '2022-11-24 07:16:13'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-24', '2022-11-24 14:16:51', '2022-11-24 07:16:51'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:02:45', '2022-11-25 02:02:45'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:05:23', '2022-11-25 02:05:23'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:05:48', '2022-11-25 02:05:48'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:07:52', '2022-11-25 02:07:52'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:08:39', '2022-11-25 02:08:39'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:08:59', '2022-11-25 02:08:59'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:09:29', '2022-11-25 02:09:29'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:09:55', '2022-11-25 02:09:55'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:15:06', '2022-11-25 02:15:06'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:15:51', '2022-11-25 02:15:51'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:16:42', '2022-11-25 02:16:42'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:18:47', '2022-11-25 02:18:47'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:19:44', '2022-11-25 02:19:44'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:19:59', '2022-11-25 02:19:59'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:21:34', '2022-11-25 02:21:34'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:24:14', '2022-11-25 02:24:14'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:25:19', '2022-11-25 02:25:19'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:25:34', '2022-11-25 02:25:34'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:25:45', '2022-11-25 02:25:45'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:25:45', '2022-11-25 02:25:45'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:25:45', '2022-11-25 02:25:45'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:25:45', '2022-11-25 02:25:45'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:25:57', '2022-11-25 02:25:57'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:30:51', '2022-11-25 02:30:51'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:34:55', '2022-11-25 02:34:55'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:35:11', '2022-11-25 02:35:11'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:36:07', '2022-11-25 02:36:07'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:38:23', '2022-11-25 02:38:23'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:40:28', '2022-11-25 02:40:28'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:41:06', '2022-11-25 02:41:06'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:43:00', '2022-11-25 02:43:00'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:43:29', '2022-11-25 02:43:29'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:44:15', '2022-11-25 02:44:15'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:50:28', '2022-11-25 02:50:28'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:50:57', '2022-11-25 02:50:57'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:51:32', '2022-11-25 02:51:32'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:52:04', '2022-11-25 02:52:04'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:53:09', '2022-11-25 02:53:09'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-11-25', '2022-11-25 09:53:45', '2022-11-25 02:53:45'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:53:50', '2022-11-25 02:53:50'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:57:53', '2022-11-25 02:57:53'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:58:16', '2022-11-25 02:58:16'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:58:44', '2022-11-25 02:58:44'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:59:03', '2022-11-25 02:59:03'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:59:32', '2022-11-25 02:59:32'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:59:50', '2022-11-25 02:59:50'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 09:59:59', '2022-11-25 02:59:59'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:01:41', '2022-11-25 03:01:41'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:08:42', '2022-11-25 03:08:42'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:13:16', '2022-11-25 03:13:16'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:13:48', '2022-11-25 03:13:48'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:14:19', '2022-11-25 03:14:19'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:17:54', '2022-11-25 03:17:54'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:18:44', '2022-11-25 03:18:44'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:19:01', '2022-11-25 03:19:01'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:19:27', '2022-11-25 03:19:27'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:20:11', '2022-11-25 03:20:11'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:20:39', '2022-11-25 03:20:39'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:21:10', '2022-11-25 03:21:10'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:21:47', '2022-11-25 03:21:47'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:22:34', '2022-11-25 03:22:34'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:23:29', '2022-11-25 03:23:29'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:24:35', '2022-11-25 03:24:35'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:25:06', '2022-11-25 03:25:06'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:26:22', '2022-11-25 03:26:22'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:27:02', '2022-11-25 03:27:02'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:49:42', '2022-11-25 03:49:42'),
+	(0, 'http://localhost/donasi-front/berita/read/article-5', '::1', '2022-11-25', '2022-11-25 10:53:26', '2022-11-25 03:53:26'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 10:53:36', '2022-11-25 03:53:36'),
+	(0, 'http://localhost/donasi-front/galeri', '::1', '2022-11-25', '2022-11-25 11:28:16', '2022-11-25 04:28:16'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 13:46:49', '2022-11-25 06:46:49'),
+	(0, 'http://localhost/donasi-front/berita/read/article-2', '::1', '2022-11-25', '2022-11-25 13:48:28', '2022-11-25 06:48:28'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-11-25', '2022-11-25 13:48:41', '2022-11-25 06:48:41'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 13:49:23', '2022-11-25 06:49:23'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 13:54:08', '2022-11-25 06:54:08'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 13:54:20', '2022-11-25 06:54:20'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 13:54:58', '2022-11-25 06:54:58'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 13:55:24', '2022-11-25 06:55:24'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 13:56:36', '2022-11-25 06:56:36'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 13:56:56', '2022-11-25 06:56:56'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 13:58:06', '2022-11-25 06:58:06'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 14:02:51', '2022-11-25 07:02:51'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 14:03:17', '2022-11-25 07:03:17'),
+	(0, 'http://localhost/donasi-front/berita/read/article-4', '::1', '2022-11-25', '2022-11-25 14:03:57', '2022-11-25 07:03:57'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 14:04:00', '2022-11-25 07:04:00'),
+	(0, 'http://localhost/donasi-front/peta', '::1', '2022-11-25', '2022-11-25 15:20:11', '2022-11-25 08:20:11'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-11-25', '2022-11-25 15:20:16', '2022-11-25 08:20:16'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:20:21', '2022-11-25 08:20:21'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:22:01', '2022-11-25 08:22:01'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:23:35', '2022-11-25 08:23:35'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:24:07', '2022-11-25 08:24:07'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:24:29', '2022-11-25 08:24:29'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:25:11', '2022-11-25 08:25:11'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:26:06', '2022-11-25 08:26:06'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:26:42', '2022-11-25 08:26:42'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:26:52', '2022-11-25 08:26:52'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:27:10', '2022-11-25 08:27:10'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-11-25', '2022-11-25 15:29:38', '2022-11-25 08:29:38'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:29:42', '2022-11-25 08:29:42'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:29:51', '2022-11-25 08:29:51'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:30:22', '2022-11-25 08:30:22'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:31:35', '2022-11-25 08:31:35'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:38:59', '2022-11-25 08:38:59'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:42:43', '2022-11-25 08:42:43'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:44:48', '2022-11-25 08:44:48'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:45:29', '2022-11-25 08:45:29'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:45:29', '2022-11-25 08:45:29'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-25', '2022-11-25 15:48:07', '2022-11-25 08:48:07'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:25:37', '2022-11-28 02:25:37'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:27:32', '2022-11-28 02:27:32'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:28:25', '2022-11-28 02:28:25'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:28:59', '2022-11-28 02:28:59'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:34:25', '2022-11-28 02:34:25'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:34:46', '2022-11-28 02:34:46'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:46:53', '2022-11-28 02:46:53'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:48:02', '2022-11-28 02:48:02'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:49:15', '2022-11-28 02:49:15'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:49:35', '2022-11-28 02:49:35'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:49:40', '2022-11-28 02:49:40'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:50:05', '2022-11-28 02:50:05'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:50:27', '2022-11-28 02:50:27'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:50:48', '2022-11-28 02:50:48'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:51:27', '2022-11-28 02:51:27'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:52:16', '2022-11-28 02:52:16'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:53:08', '2022-11-28 02:53:08'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 09:53:38', '2022-11-28 02:53:38'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 10:04:26', '2022-11-28 03:04:26'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 10:05:21', '2022-11-28 03:05:21'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 10:06:11', '2022-11-28 03:06:11'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-28', '2022-11-28 10:06:17', '2022-11-28 03:06:17'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 14:36:32', '2022-11-29 07:36:32'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 14:36:58', '2022-11-29 07:36:58'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 14:38:31', '2022-11-29 07:38:31'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 14:38:47', '2022-11-29 07:38:47'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 14:41:55', '2022-11-29 07:41:55'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 14:42:31', '2022-11-29 07:42:31'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 14:42:46', '2022-11-29 07:42:46'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 14:43:00', '2022-11-29 07:43:00'),
+	(0, 'http://localhost/donasi-front/berita/read/article-5', '::1', '2022-11-29', '2022-11-29 14:52:18', '2022-11-29 07:52:18'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-11-29', '2022-11-29 14:52:22', '2022-11-29 07:52:22'),
+	(0, 'http://localhost/donasi-front/berita/read/article-5', '::1', '2022-11-29', '2022-11-29 14:53:00', '2022-11-29 07:53:00'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 14:53:02', '2022-11-29 07:53:02'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-11-29', '2022-11-29 14:53:07', '2022-11-29 07:53:07'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 14:53:13', '2022-11-29 07:53:13'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-11-29', '2022-11-29 14:53:25', '2022-11-29 07:53:25'),
+	(0, 'http://localhost/donasi-front/berita/read/article-2', '::1', '2022-11-29', '2022-11-29 14:56:16', '2022-11-29 07:56:16'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-11-29', '2022-11-29 14:56:23', '2022-11-29 07:56:23'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 14:56:52', '2022-11-29 07:56:52'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 14:57:49', '2022-11-29 07:57:49'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:04:47', '2022-11-29 08:04:47'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:05:40', '2022-11-29 08:05:40'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:06:09', '2022-11-29 08:06:09'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:06:24', '2022-11-29 08:06:24'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:07:16', '2022-11-29 08:07:16'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:07:24', '2022-11-29 08:07:24'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:07:31', '2022-11-29 08:07:31'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:07:39', '2022-11-29 08:07:39'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:09:18', '2022-11-29 08:09:18'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:09:45', '2022-11-29 08:09:45'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:11:45', '2022-11-29 08:11:45'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:12:30', '2022-11-29 08:12:30'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:13:24', '2022-11-29 08:13:24'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:13:37', '2022-11-29 08:13:37'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:15:10', '2022-11-29 08:15:10'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:18:01', '2022-11-29 08:18:01'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:18:29', '2022-11-29 08:18:29'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:19:46', '2022-11-29 08:19:46'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:19:58', '2022-11-29 08:19:58'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:20:56', '2022-11-29 08:20:56'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:21:16', '2022-11-29 08:21:16'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:22:19', '2022-11-29 08:22:19'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:22:31', '2022-11-29 08:22:31'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:23:15', '2022-11-29 08:23:15'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:24:41', '2022-11-29 08:24:41'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:25:01', '2022-11-29 08:25:01'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:25:37', '2022-11-29 08:25:37'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:25:48', '2022-11-29 08:25:48'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:26:30', '2022-11-29 08:26:30'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:27:00', '2022-11-29 08:27:00'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:28:22', '2022-11-29 08:28:22'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:29:01', '2022-11-29 08:29:01'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:32:00', '2022-11-29 08:32:00'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:32:34', '2022-11-29 08:32:34'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:34:29', '2022-11-29 08:34:29'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:40:42', '2022-11-29 08:40:42'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:41:06', '2022-11-29 08:41:06'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:42:07', '2022-11-29 08:42:07'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:42:34', '2022-11-29 08:42:34'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:43:00', '2022-11-29 08:43:00'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:43:12', '2022-11-29 08:43:12'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:44:56', '2022-11-29 08:44:56'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:45:13', '2022-11-29 08:45:13'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:45:59', '2022-11-29 08:45:59'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:46:40', '2022-11-29 08:46:40'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:48:41', '2022-11-29 08:48:41'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:49:11', '2022-11-29 08:49:11'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:49:41', '2022-11-29 08:49:41'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:49:47', '2022-11-29 08:49:47'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:49:52', '2022-11-29 08:49:52'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:50:00', '2022-11-29 08:50:00'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-11-29', '2022-11-29 15:54:17', '2022-11-29 08:54:17'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-11-29', '2022-11-29 15:54:25', '2022-11-29 08:54:25'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-11-29', '2022-11-29 15:54:48', '2022-11-29 08:54:48'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-11-29', '2022-11-29 15:56:06', '2022-11-29 08:56:06'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:56:12', '2022-11-29 08:56:12'),
+	(0, 'http://localhost/donasi-front/kontak', '::1', '2022-11-29', '2022-11-29 15:56:16', '2022-11-29 08:56:16'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-11-29', '2022-11-29 15:56:20', '2022-11-29 08:56:20'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-11-29', '2022-11-29 15:57:41', '2022-11-29 08:57:41'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:57:47', '2022-11-29 08:57:47'),
+	(0, 'http://localhost/donasi-front/download', '::1', '2022-11-29', '2022-11-29 15:57:52', '2022-11-29 08:57:52'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 15:58:01', '2022-11-29 08:58:01'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 16:00:47', '2022-11-29 09:00:47'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 16:01:09', '2022-11-29 09:01:09'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 16:01:26', '2022-11-29 09:01:26'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-11-29', '2022-11-29 16:01:35', '2022-11-29 09:01:35'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 16:02:56', '2022-11-29 09:02:56'),
+	(0, 'http://localhost/donasi-front/peta', '::1', '2022-11-29', '2022-11-29 16:03:00', '2022-11-29 09:03:00'),
+	(0, 'http://localhost/donasi-front/peta', '::1', '2022-11-29', '2022-11-29 16:03:13', '2022-11-29 09:03:13'),
+	(0, 'http://localhost/donasi-front/peta', '::1', '2022-11-29', '2022-11-29 16:03:21', '2022-11-29 09:03:21'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-29', '2022-11-29 16:23:19', '2022-11-29 09:23:19'),
+	(0, 'http://localhost/donasi-front/kontak', '::1', '2022-11-29', '2022-11-29 16:23:38', '2022-11-29 09:23:38'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-11-29', '2022-11-29 16:23:43', '2022-11-29 09:23:43'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-11-29', '2022-11-29 16:23:50', '2022-11-29 09:23:50'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-11-30', '2022-11-30 05:50:10', '2022-11-29 22:50:10'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-07', '2022-12-07 08:30:36', '2022-12-07 01:30:36'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-07', '2022-12-07 08:42:25', '2022-12-07 01:42:25'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-07', '2022-12-07 08:42:46', '2022-12-07 01:42:46'),
+	(0, 'http://localhost/donasi-front/peta', '::1', '2022-12-07', '2022-12-07 08:43:21', '2022-12-07 01:43:21'),
+	(0, 'http://localhost/donasi-front/download', '::1', '2022-12-07', '2022-12-07 08:44:08', '2022-12-07 01:44:08'),
+	(0, 'http://localhost/donasi-front/galeri', '::1', '2022-12-07', '2022-12-07 08:44:13', '2022-12-07 01:44:13'),
+	(0, 'http://localhost/donasi-front/galeri', '::1', '2022-12-07', '2022-12-07 08:44:18', '2022-12-07 01:44:18'),
+	(0, 'http://localhost/donasi-front/video', '::1', '2022-12-07', '2022-12-07 08:44:22', '2022-12-07 01:44:22'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-12-07', '2022-12-07 08:44:25', '2022-12-07 01:44:25'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-12-07', '2022-12-07 08:44:32', '2022-12-07 01:44:32'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-07', '2022-12-07 08:44:40', '2022-12-07 01:44:40'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 08:44:45', '2022-12-07 01:44:45'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 08:45:10', '2022-12-07 01:45:10'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 08:45:19', '2022-12-07 01:45:19'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 08:45:42', '2022-12-07 01:45:42'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 08:45:56', '2022-12-07 01:45:56'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 08:46:03', '2022-12-07 01:46:03'),
+	(0, 'http://localhost/donasi-front/berita/read/article-5', '::1', '2022-12-07', '2022-12-07 08:47:10', '2022-12-07 01:47:10'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 08:47:17', '2022-12-07 01:47:17'),
+	(0, 'http://localhost/donasi-front/berita/read/article-5', '::1', '2022-12-07', '2022-12-07 08:47:23', '2022-12-07 01:47:23'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 08:47:26', '2022-12-07 01:47:26'),
+	(0, 'http://localhost/donasi-front/berita/read/article-5', '::1', '2022-12-07', '2022-12-07 08:48:12', '2022-12-07 01:48:12'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 08:48:18', '2022-12-07 01:48:18'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 08:52:50', '2022-12-07 01:52:50'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 08:53:40', '2022-12-07 01:53:40'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 08:58:32', '2022-12-07 01:58:32'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 08:59:23', '2022-12-07 01:59:23'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:01:04', '2022-12-07 02:01:04'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:02:38', '2022-12-07 02:02:38'),
+	(0, 'http://localhost/donasi-front/download', '::1', '2022-12-07', '2022-12-07 09:02:48', '2022-12-07 02:02:48'),
+	(0, 'http://localhost/donasi-front/kontak', '::1', '2022-12-07', '2022-12-07 09:02:53', '2022-12-07 02:02:53'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-12-07', '2022-12-07 09:02:59', '2022-12-07 02:02:59'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:03:22', '2022-12-07 02:03:22'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:04:05', '2022-12-07 02:04:05'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:05:19', '2022-12-07 02:05:19'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:06:09', '2022-12-07 02:06:09'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:07:26', '2022-12-07 02:07:26'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:08:19', '2022-12-07 02:08:19'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:08:42', '2022-12-07 02:08:42'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:08:53', '2022-12-07 02:08:53'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:09:34', '2022-12-07 02:09:34'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:09:50', '2022-12-07 02:09:50'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:10:14', '2022-12-07 02:10:14'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:34:37', '2022-12-07 02:34:37'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-07', '2022-12-07 09:35:09', '2022-12-07 02:35:09'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:35:50', '2022-12-07 02:35:50'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:36:13', '2022-12-07 02:36:13'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:36:22', '2022-12-07 02:36:22'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:37:49', '2022-12-07 02:37:49'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:37:56', '2022-12-07 02:37:56'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:40:23', '2022-12-07 02:40:23'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:40:46', '2022-12-07 02:40:46'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:42:18', '2022-12-07 02:42:18'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:42:21', '2022-12-07 02:42:21'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:43:09', '2022-12-07 02:43:09'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:43:30', '2022-12-07 02:43:30'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:43:35', '2022-12-07 02:43:35'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:46:26', '2022-12-07 02:46:26'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:46:33', '2022-12-07 02:46:33'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:46:37', '2022-12-07 02:46:37'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:46:53', '2022-12-07 02:46:53'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:46:58', '2022-12-07 02:46:58'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:47:07', '2022-12-07 02:47:07'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:47:11', '2022-12-07 02:47:11'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 09:47:39', '2022-12-07 02:47:39'),
+	(0, 'http://localhost/donasi-front/berita/search', '::1', '2022-12-07', '2022-12-07 09:47:47', '2022-12-07 02:47:47'),
+	(0, 'http://localhost/donasi-front/berita/search', '::1', '2022-12-07', '2022-12-07 09:47:56', '2022-12-07 02:47:56'),
+	(0, 'http://localhost/donasi-front/berita/search', '::1', '2022-12-07', '2022-12-07 10:35:35', '2022-12-07 03:35:35'),
+	(0, 'http://localhost/donasi-front/berita/search', '::1', '2022-12-07', '2022-12-07 10:36:29', '2022-12-07 03:36:29'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 10:36:30', '2022-12-07 03:36:30'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 10:36:33', '2022-12-07 03:36:33'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 10:36:42', '2022-12-07 03:36:42'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 10:36:50', '2022-12-07 03:36:50'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 10:37:19', '2022-12-07 03:37:19'),
+	(0, 'http://localhost/donasi-front/berita/search', '::1', '2022-12-07', '2022-12-07 10:37:25', '2022-12-07 03:37:25'),
+	(0, 'http://localhost/donasi-front/berita/search', '::1', '2022-12-07', '2022-12-07 10:37:38', '2022-12-07 03:37:38'),
+	(0, 'http://localhost/donasi-front/berita/search', '::1', '2022-12-07', '2022-12-07 10:37:48', '2022-12-07 03:37:48'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 14:08:21', '2022-12-07 07:08:21'),
+	(0, 'http://localhost/donasi-front/berita/search', '::1', '2022-12-07', '2022-12-07 14:12:00', '2022-12-07 07:12:00'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-07', '2022-12-07 16:02:15', '2022-12-07 09:02:15'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 16:02:21', '2022-12-07 09:02:21'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 16:03:51', '2022-12-07 09:03:51'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 16:04:13', '2022-12-07 09:04:13'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-07', '2022-12-07 16:06:59', '2022-12-07 09:06:59'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-12-07', '2022-12-07 16:07:25', '2022-12-07 09:07:25'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-12-07', '2022-12-07 16:15:17', '2022-12-07 09:15:17'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-12-07', '2022-12-07 16:26:16', '2022-12-07 09:26:16'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-12-07', '2022-12-07 16:26:22', '2022-12-07 09:26:22'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-12-07', '2022-12-07 16:26:38', '2022-12-07 09:26:38'),
+	(0, 'http://localhost/donasi-front/tentang-kami', '::1', '2022-12-07', '2022-12-07 18:46:37', '2022-12-07 11:46:37'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-07', '2022-12-07 18:48:15', '2022-12-07 11:48:15'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 18:48:19', '2022-12-07 11:48:19'),
+	(0, 'http://localhost/donasi-front/berita/search', '::1', '2022-12-07', '2022-12-07 18:48:25', '2022-12-07 11:48:25'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-07', '2022-12-07 18:48:33', '2022-12-07 11:48:33'),
+	(0, 'http://localhost/donasi-front/berita/search', '::1', '2022-12-07', '2022-12-07 18:49:01', '2022-12-07 11:49:01'),
+	(0, 'http://localhost/donasi-front/berita/read/prototype', '::1', '2022-12-07', '2022-12-07 18:49:27', '2022-12-07 11:49:27'),
+	(0, 'http://localhost/donasi-front/berita/read/prototype', '::1', '2022-12-07', '2022-12-07 18:49:42', '2022-12-07 11:49:42'),
+	(0, 'http://localhost/donasi-front/berita/read/article-5', '::1', '2022-12-07', '2022-12-07 18:49:51', '2022-12-07 11:49:51'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-08', '2022-12-08 08:29:57', '2022-12-08 01:29:57'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-08', '2022-12-08 08:30:11', '2022-12-08 01:30:11'),
+	(0, 'http://localhost/donasi-front/berita/read/prototype', '::1', '2022-12-08', '2022-12-08 08:30:16', '2022-12-08 01:30:16'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-08', '2022-12-08 08:32:23', '2022-12-08 01:32:23'),
+	(0, 'http://localhost/donasi-front/berita/read/article-5', '::1', '2022-12-08', '2022-12-08 08:34:20', '2022-12-08 01:34:20'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-08', '2022-12-08 08:34:24', '2022-12-08 01:34:24'),
+	(0, 'http://localhost/donasi-front/berita/read/article-5', '::1', '2022-12-08', '2022-12-08 08:34:28', '2022-12-08 01:34:28'),
+	(0, 'http://localhost/donasi-front/berita/layanan/1', '::1', '2022-12-08', '2022-12-08 08:35:15', '2022-12-08 01:35:15'),
+	(0, 'http://localhost/donasi-front/berita/layanan/sas', '::1', '2022-12-08', '2022-12-08 08:35:20', '2022-12-08 01:35:20'),
+	(0, 'http://localhost/donasi-front/berita/layanan/sas-asas', '::1', '2022-12-08', '2022-12-08 08:35:30', '2022-12-08 01:35:30'),
+	(0, 'http://localhost/donasi-front/berita/layanan/sas', '::1', '2022-12-08', '2022-12-08 08:35:34', '2022-12-08 01:35:34'),
+	(0, 'http://localhost/donasi-front/berita/layanan/1', '::1', '2022-12-08', '2022-12-08 08:35:35', '2022-12-08 01:35:35'),
+	(0, 'http://localhost/donasi-front/berita/read/article-5', '::1', '2022-12-08', '2022-12-08 08:35:36', '2022-12-08 01:35:36'),
+	(0, 'http://localhost/donasi-front/berita/kategori/peta', '::1', '2022-12-08', '2022-12-08 08:41:47', '2022-12-08 01:41:47'),
+	(0, 'http://localhost/donasi-front/berita/kategori/kegiatan', '::1', '2022-12-08', '2022-12-08 08:43:02', '2022-12-08 01:43:02'),
+	(0, 'http://localhost/donasi-front/berita/kategori/program-remaja', '::1', '2022-12-08', '2022-12-08 08:43:14', '2022-12-08 01:43:14'),
+	(0, 'http://localhost/donasi-front/berita/kategori/program-remaja', '::1', '2022-12-08', '2022-12-08 08:43:56', '2022-12-08 01:43:56'),
+	(0, 'http://localhost/donasi-front/berita/kategori/program-remaja', '::1', '2022-12-08', '2022-12-08 08:44:18', '2022-12-08 01:44:18'),
+	(0, 'http://localhost/donasi-front/berita/kategori/program-remaja', '::1', '2022-12-08', '2022-12-08 08:48:47', '2022-12-08 01:48:47'),
+	(0, 'http://localhost/donasi-front/berita/kategori/program-remaja', '::1', '2022-12-08', '2022-12-08 08:55:59', '2022-12-08 01:55:59'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-08', '2022-12-08 08:56:04', '2022-12-08 01:56:04'),
+	(0, 'http://localhost/donasi-front/berita/kategori/program-remaja', '::1', '2022-12-08', '2022-12-08 08:56:09', '2022-12-08 01:56:09'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-08', '2022-12-08 08:57:15', '2022-12-08 01:57:15'),
+	(0, 'http://localhost/donasi-front/berita/kategori/program-relawan', '::1', '2022-12-08', '2022-12-08 09:11:06', '2022-12-08 02:11:06'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-08', '2022-12-08 09:11:13', '2022-12-08 02:11:13'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-08', '2022-12-08 09:12:00', '2022-12-08 02:12:00'),
+	(0, 'http://localhost/donasi-front/berita/read/program-remaja', '::1', '2022-12-08', '2022-12-08 09:12:51', '2022-12-08 02:12:51'),
+	(0, 'http://localhost/donasi-front/berita/read/program-relawan', '::1', '2022-12-08', '2022-12-08 09:14:35', '2022-12-08 02:14:35'),
+	(0, 'http://localhost/donasi-front/berita/read/article-5', '::1', '2022-12-08', '2022-12-08 09:14:46', '2022-12-08 02:14:46'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-08', '2022-12-08 09:14:54', '2022-12-08 02:14:54'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-08', '2022-12-08 09:14:58', '2022-12-08 02:14:58'),
+	(0, 'http://localhost/donasi-front/berita/read/program-relawan', '::1', '2022-12-08', '2022-12-08 09:15:08', '2022-12-08 02:15:08'),
+	(0, 'http://localhost/donasi-front/berita/read/program-relawan', '::1', '2022-12-08', '2022-12-08 09:15:36', '2022-12-08 02:15:36'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-08', '2022-12-08 09:15:48', '2022-12-08 02:15:48'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-08', '2022-12-08 09:15:53', '2022-12-08 02:15:53'),
+	(0, 'http://localhost/donasi-front/berita/kategori/program-relawan', '::1', '2022-12-08', '2022-12-08 09:15:57', '2022-12-08 02:15:57'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-08', '2022-12-08 09:23:36', '2022-12-08 02:23:36'),
+	(0, 'http://localhost/donasi-front/download', '::1', '2022-12-08', '2022-12-08 09:24:08', '2022-12-08 02:24:08'),
+	(0, 'http://localhost/donasi-front/kontak', '::1', '2022-12-08', '2022-12-08 09:24:11', '2022-12-08 02:24:11'),
+	(0, 'http://localhost/donasi-front/peta', '::1', '2022-12-08', '2022-12-08 09:24:25', '2022-12-08 02:24:25'),
+	(0, 'http://localhost/donasi-front/peta', '::1', '2022-12-08', '2022-12-08 09:26:15', '2022-12-08 02:26:15'),
+	(0, 'http://localhost/donasi-front/peta', '::1', '2022-12-08', '2022-12-08 09:27:00', '2022-12-08 02:27:00'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-22', '2022-12-22 09:03:08', '2022-12-22 02:03:08'),
+	(0, 'http://localhost/donasi-front/berita/kategori/program-remaja', '::1', '2022-12-22', '2022-12-22 09:06:20', '2022-12-22 02:06:20'),
+	(0, 'http://localhost/donasi-front/peta', '::1', '2022-12-22', '2022-12-22 09:06:34', '2022-12-22 02:06:34'),
+	(0, 'http://localhost/donasi-front/berita/kategori/program-remaja', '::1', '2022-12-22', '2022-12-22 09:06:51', '2022-12-22 02:06:51'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-22', '2022-12-22 09:06:53', '2022-12-22 02:06:53'),
+	(0, 'http://localhost/donasi-front/berita', '::1', '2022-12-22', '2022-12-22 09:07:14', '2022-12-22 02:07:14'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-22', '2022-12-22 09:07:27', '2022-12-22 02:07:27'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-22', '2022-12-22 09:11:09', '2022-12-22 02:11:09'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-22', '2022-12-22 09:12:07', '2022-12-22 02:12:07'),
+	(0, 'http://localhost/donasi-front/index.php', '::1', '2022-12-22', '2022-12-22 09:12:30', '2022-12-22 02:12:30');
 
 -- Dumping structure for table db_donasi_front.pekerjaan
 CREATE TABLE IF NOT EXISTS `pekerjaan` (
@@ -1209,9 +1780,10 @@ CREATE TABLE IF NOT EXISTS `pekerjaan` (
   `urutan` int(11) NOT NULL,
   `nama_pekerjaan` varchar(200) NOT NULL,
   `keterangan` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_donasi_front.pekerjaan: ~9 rows (approximately)
+DELETE FROM `pekerjaan`;
 INSERT INTO `pekerjaan` (`id_pekerjaan`, `slug_pekerjaan`, `urutan`, `nama_pekerjaan`, `keterangan`) VALUES
 	(1, 'karyawan-swasta', 1, 'Karyawan Swasta', NULL),
 	(2, 'wirausaha', 2, 'Wirausaha', NULL),
@@ -1248,9 +1820,10 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `tempat_lahir` varchar(255) DEFAULT NULL,
   `tanggal_lahir` date DEFAULT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_donasi_front.staff: ~2 rows (approximately)
+DELETE FROM `staff`;
 INSERT INTO `staff` (`id_staff`, `id_user`, `id_kategori_staff`, `urutan`, `nama`, `alamat`, `telepon`, `website`, `email`, `password`, `password_hint`, `isi`, `jabatan`, `keahlian`, `gambar`, `status_staff`, `keywords`, `status_baca`, `status_tutor`, `ip_address`, `tempat_lahir`, `tanggal_lahir`, `tanggal`) VALUES
 	(9, 1, NULL, 0, 'Fitra Raudha', '', '0813 8841 0829', '', '', NULL, NULL, NULL, 'Direktur', '', NULL, 'Yes', '', 'Sudah', 'Ya', '', '', '1970-01-01', '2019-07-14 23:31:43'),
 	(10, 1, NULL, 0, 'Sigit Yuwono Wachid', '', '085715100485', '', '', NULL, NULL, NULL, '', '', NULL, 'No', '', 'Sudah', 'Ya', '', '', '1970-01-01', '2019-04-13 21:58:29');
@@ -1263,9 +1836,10 @@ CREATE TABLE IF NOT EXISTS `sub_menu` (
   `link` varchar(255) NOT NULL,
   `target` varchar(20) NOT NULL,
   `urutan` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_donasi_front.sub_menu: ~2 rows (approximately)
+DELETE FROM `sub_menu`;
 INSERT INTO `sub_menu` (`id_sub_menu`, `id_menu`, `nama_sub_menu`, `link`, `target`, `urutan`) VALUES
 	(1, 1, 'Menu 1', 'http://localhost', '', 1),
 	(3, 1, 'Menu 2', 'http://localhost/1', '', 2);
@@ -1281,9 +1855,10 @@ CREATE TABLE IF NOT EXISTS `up` (
   `telepon` varchar(255) DEFAULT NULL,
   `keterangan` text DEFAULT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_donasi_front.up: ~3 rows (approximately)
+DELETE FROM `up`;
 INSERT INTO `up` (`id_up`, `id_client`, `id_user`, `nama_up`, `bagian`, `email`, `telepon`, `keterangan`, `tanggal`) VALUES
 	(2, 3, 1, 'Rayyan Andoyo', 'Marketing', 'eflita@gmail.com', '(021) 27534579', 'adada', '2019-04-29 14:26:55'),
 	(3, 3, 1, 'Izra', 'Keuangan', 'contact@nuansabaru.co.id', '0813 8841 0829', 'ok', '2019-04-29 14:19:51'),
@@ -1304,9 +1879,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `keterangan` text DEFAULT NULL,
   `tanggal_post` datetime NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_donasi_front.users: ~3 rows (approximately)
+DELETE FROM `users`;
 INSERT INTO `users` (`id_user`, `id_bagian`, `nama`, `email`, `username`, `password`, `password_hint`, `akses_level`, `kode_rahasia`, `gambar`, `keterangan`, `tanggal_post`, `tanggal`) VALUES
 	(1, 0, 'Prototype', 'prototype@gmail.com', 'javawebmedia', '5c0c8d78301081a9fe22695fffe4f726d4ea87b3', 'Prototype', 'Admin', NULL, 'download.png', '', '2019-10-12 15:50:21', '2022-11-08 13:41:37'),
 	(2, 0, 'Rayyan', 'andoyoandoyo@gmail.com', 'rayyan', 'acc5d43e0936dbf3f27b906891aaafdf9ede4508', '', 'User', NULL, NULL, '', '2019-04-24 17:21:18', '2019-04-24 03:21:18'),
@@ -1322,9 +1898,10 @@ CREATE TABLE IF NOT EXISTS `user_log` (
   `url` varchar(255) DEFAULT NULL,
   `jenis` varchar(24) NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table db_donasi_front.user_log: ~1.972 rows (approximately)
+-- Dumping data for table db_donasi_front.user_log: ~2,090 rows (approximately)
+DELETE FROM `user_log`;
 INSERT INTO `user_log` (`id_user_log`, `ip_address`, `id_user`, `username`, `akses_level`, `url`, `jenis`, `tanggal`) VALUES
 	(1, '::1', 5, 'andoyo', '', 'http://localhost/dlp/admin/dasbor', 'Administrator', '2018-05-15 20:51:54'),
 	(2, '::1', 5, 'andoyo', 'Admin', 'http://localhost/dlp/admin/dasbor', 'Administrator', '2018-05-15 20:53:55'),
@@ -3415,7 +3992,177 @@ INSERT INTO `user_log` (`id_user_log`, `ip_address`, `id_user`, `username`, `aks
 	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/10', '', '2022-11-17 18:36:05'),
 	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-17 18:36:05'),
 	(0, '::1', 0, '-', '', 'http://localhost/donasi-front/admin/galeri/tambah', '', '2022-11-17 22:03:50'),
-	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/tambah', '', '2022-11-17 22:03:54');
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/tambah', '', '2022-11-17 22:03:54'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 07:29:07'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/tambah', '', '2022-11-23 07:29:17'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 07:29:26'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/10', '', '2022-11-23 07:29:28'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 07:29:32'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/tambah', '', '2022-11-23 07:29:33'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/tambah', '', '2022-11-23 07:30:21'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 07:30:21'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/11', '', '2022-11-23 07:30:30'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/11', '', '2022-11-23 07:30:34'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 07:30:34'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/tambah', '', '2022-11-23 07:49:30'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/tambah', '', '2022-11-23 07:49:47'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 07:49:47'),
+	(0, '::1', 0, '-', '', 'http://localhost/donasi-front/admin/galeri/edit/12', '', '2022-11-23 10:51:25'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/12', '', '2022-11-23 10:51:29'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/12', '', '2022-11-23 10:51:38'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 10:51:39'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/11', '', '2022-11-23 10:52:16'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/11', '', '2022-11-23 10:54:54'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 10:54:56'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/tambah', '', '2022-11-23 14:22:56'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/kategori_galeri', '', '2022-11-23 14:23:36'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/kategori_galeri', '', '2022-11-23 14:23:55'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/kategori_galeri', '', '2022-11-23 14:23:56'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 14:24:04'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/1', '', '2022-11-23 14:24:13'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/1', '', '2022-11-23 14:24:17'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 14:24:17'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/1', '', '2022-11-23 15:40:50'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/1', '', '2022-11-23 15:41:12'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 15:41:12'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/9', '', '2022-11-23 15:41:17'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/9', '', '2022-11-23 15:41:27'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 15:41:27'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/11', '', '2022-11-23 15:41:39'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/11', '', '2022-11-23 15:41:44'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 15:41:44'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/12', '', '2022-11-23 15:41:50'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/12', '', '2022-11-23 15:41:56'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-23 15:41:56'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita', '', '2022-11-23 15:42:35'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-11-23 15:42:59'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-11-23 15:54:46'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-11-23 15:54:47'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-11-23 15:55:16'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-11-23 15:55:40'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-11-23 15:55:41'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-11-23 15:56:50'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-11-23 15:57:34'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-11-23 15:57:34'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-11-23 15:57:39'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-11-23 15:58:01'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-11-23 15:58:02'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-11-23 15:58:42'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-11-23 15:59:13'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-11-23 15:59:13'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-25 08:45:13'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/11', '', '2022-11-25 08:45:17'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri/edit/11', '', '2022-11-25 08:45:20'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-11-25 08:45:20'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 07:17:30'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 07:17:32'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 07:22:35'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 07:22:53'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 07:23:30'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 07:23:31'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 07:25:44'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 07:26:01'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/7', '', '2022-12-07 07:26:03'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/7', '', '2022-12-07 08:24:31'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 08:24:40'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:24:41'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 08:26:39'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/7', '', '2022-12-07 08:26:42'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 08:28:37'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:28:38'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:29:06'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:29:26'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:38:45'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:39:31'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:39:49'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:40:01'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:45:09'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:45:21'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-12-07 08:45:21'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:47:19'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:47:27'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:53:09'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 08:53:30'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:53:31'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:54:01'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:54:13'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 08:54:29'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:54:30'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:54:40'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 08:55:18'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-12-07 08:55:18'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 08:55:25'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/9', '', '2022-12-07 08:55:28'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/9', '', '2022-12-07 08:58:18'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/9', '', '2022-12-07 08:58:31'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-12-07 08:58:31'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/9', '', '2022-12-07 08:59:10'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/9', '', '2022-12-07 08:59:27'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/9', '', '2022-12-07 09:03:47'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-12-07 09:03:47'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/8', '', '2022-12-07 09:04:03'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/8', '', '2022-12-07 09:04:09'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-12-07 09:04:10'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/status_berita/Publish', '', '2022-12-07 09:04:52'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 09:05:06'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/edit/9', '', '2022-12-07 09:05:17'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 09:10:27'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 09:11:35'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 09:11:36'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 09:13:02'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 09:13:03'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 09:13:13'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 09:13:33'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 09:14:01'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 09:15:13'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/9', '', '2022-12-07 09:26:44'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/9', '', '2022-12-07 09:27:32'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/9', '', '2022-12-07 09:27:54'),
+	(0, '::1', 0, '-', '', 'http://localhost/donasi-front/admin/berita/edit/9', '', '2022-12-07 11:46:39'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/9', '', '2022-12-07 11:46:42'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/edit/9', '', '2022-12-07 11:47:36'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-12-07 11:47:50'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/video', '', '2022-12-07 11:47:53'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 11:47:55'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 11:47:58'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/kategori', '', '2022-12-07 11:48:01'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-07 11:48:03'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-07 11:48:11'),
+	(0, '::1', 0, '-', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-08 01:30:00'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-08 01:30:02'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/kategori', '', '2022-12-08 01:32:43'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/kategori', '', '2022-12-08 01:33:03'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/kategori', '', '2022-12-08 01:33:03'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/kategori', '', '2022-12-08 01:33:18'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/kategori', '', '2022-12-08 01:33:19'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-08 01:33:23'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-08 01:33:24'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-08 01:43:27'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-08 01:43:28'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-08 01:43:47'),
+	(0, '::1', 2, 'rayyan', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-12-08 01:43:47'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-08 01:44:09'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/proses', '', '2022-12-08 01:44:14'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-08 01:44:14'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/edit/10', '', '2022-12-08 01:55:36'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-08 01:55:40'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/edit/10', '', '2022-12-08 01:55:50'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/edit/10', '', '2022-12-08 01:55:55'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-12-08 01:55:55'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/akun', '', '2022-12-08 01:57:12'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-08 01:59:33'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-08 01:59:34'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-08 02:03:36'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-08 02:10:30'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-08 02:10:57'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-12-08 02:10:57'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/tambah', '', '2022-12-08 02:14:07'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita', '', '2022-12-08 02:15:23'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/edit/11', '', '2022-12-08 02:15:26'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/edit/11', '', '2022-12-08 02:15:32'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/jenis_berita/Berita', '', '2022-12-08 02:15:32'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/berita/edit/11', '', '2022-12-08 02:23:17'),
+	(0, '::1', 1, 'javawebmedia', '', 'http://localhost/donasi-front/admin/galeri', '', '2022-12-22 02:09:38');
 
 -- Dumping structure for table db_donasi_front.video
 CREATE TABLE IF NOT EXISTS `video` (
@@ -3428,9 +4175,10 @@ CREATE TABLE IF NOT EXISTS `video` (
   `bahasa` varchar(20) NOT NULL,
   `id_user` int(11) NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table db_donasi_front.video: ~0 rows (approximately)
+DELETE FROM `video`;
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

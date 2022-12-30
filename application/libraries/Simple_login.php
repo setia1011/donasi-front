@@ -41,7 +41,12 @@ class Simple_login
 				redirect($pengalihan,'refresh');
 			}else{
 				// Jika ga ada, default masuk ke halaman dasbor
-				redirect(base_url('admin/dasbor'),'refresh');
+				if ($akses_level == 'Admin') {
+					redirect(base_url('admin/dasbor'),'refresh');
+				} else {
+					redirect(base_url('admin/berita'),'refresh');
+				}
+				
 			}
 		}else{
 			// Kalau ga ada user yg cocok, suruh login lagi

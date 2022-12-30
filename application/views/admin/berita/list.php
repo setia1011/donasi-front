@@ -105,8 +105,9 @@ if($this->uri->segment(3) != "") {
 
         <a href="<?php echo base_url('admin/berita/edit/'.$berita->id_berita) ?>" 
         class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-
-        <a href="<?php echo base_url('admin/berita/delete/'.$berita->id_berita) ?>" class="btn btn-danger btn-xs" onclick="confirmation(event)"><i class="fa fa-trash-o"></i></a>
+        <?php if ($_SESSION['akses_level'] == 'Admin') { ?>
+          <a href="<?php echo base_url('admin/berita/delete/'.$berita->id_berita) ?>" class="btn btn-danger btn-xs" onclick="confirmation(event)"><i class="fa fa-trash-o"></i></a>
+        <?php } ?>
       </div>
     </td>
 </tr>

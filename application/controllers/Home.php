@@ -12,6 +12,7 @@ class Home extends CI_Controller {
 		$this->load->model('video_model');
 		$this->load->model('agenda_model');
 		$this->load->model('client_model');
+		$this->load->model('kategori_model');
 	}
 
 	public function index()
@@ -103,12 +104,19 @@ class Home extends CI_Controller {
 		$this->load->view('layout/wrapper', $data);
 	}
 
-	public function about() {
+	public function about($judul = '') {
+		$berita = "";
+		if ($judul !== '') {
+			$berita = $this->berita_model->read($judul);
+		}
 		$site = $this->konfigurasi_model->listing();
+		$aboutlist = $this->berita_model->beritaByKategori(1, 'Publish');
 		$data = array(	'title'		=> 'Kontak '.$site->namaweb.' | '.$site->tagline,
 						'deskripsi'	=> 'Kontak '.$site->namaweb.' | '.$site->tagline.' '.$site->tentang,
 						'keywords'	=> 'Kontak '.$site->namaweb.' | '.$site->tagline.' '.$site->keywords,
 						'site'		=> $site,
+						'aboutlist'		=> $aboutlist,
+						'berita'	=> $berita,
 						'isi'		=> 'about/list');
 		$this->load->view('layout/wrapper', $data, FALSE);
 	}

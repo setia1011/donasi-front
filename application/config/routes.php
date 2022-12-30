@@ -53,5 +53,6 @@ $route['default_controller'] = 'home';
 $route['404_override'] = 'home/oops';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['tentang-kami'] = 'home/about';
+$route['about'] = 'home/about';
+$route['about/(:any)'] = 'home/about/$1';
 $route['peta'] = 'home/peta';

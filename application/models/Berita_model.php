@@ -220,6 +220,25 @@ class Berita_model extends CI_Model {
 		return $query->result();
 	}
 
+	// Listing berita by kategori dan status
+	public function beritaByKategori($id, $status) {
+		$this->db->select("b.id_kategori,
+			b.nama_kategori,
+			a.id_berita,
+			a.judul_berita,
+			a.slug_berita,
+			a.isi");
+		$this->db->from("berita a");
+		$this->db->join("kategori b", "kategori b ON a.id_kategori = b.id_kategori", "INNER");
+		$this->db->where(array(
+			'a.id_kategori' => 1,
+			'a.status_berita' => 'Publish'
+		));
+		$this->db->order_by("a.id_berita");
+		$q = $this->db->get();
+		return $q->result();
+	}
+
 	// Listing total
 	public function total() {
 		$this->db->select('berita.*, users.nama');

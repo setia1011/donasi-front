@@ -30,7 +30,7 @@ $nav_layanan                = $this->nav_model->nav_layanan();
             <!-- home -->
             <!-- <li><a href="<?php echo base_url() ?>" class="active">BERANDA</a></li> -->
 
-            <li><a href="<?php echo base_url('/tentang-kami'); ?>" class="active">TENTANG KAMI</a></li>
+            <li><a href="<?php echo base_url('/about'); ?>" class="active">TENTANG KAMI</a></li>
 
             <li><a href="<?php echo base_url('/peta'); ?>">PETA</a></li>
 

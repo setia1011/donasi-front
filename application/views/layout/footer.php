@@ -8,7 +8,7 @@ $site = $this->konfigurasi_model->listing();
     background-color: #cc9000;
     padding: 10px;
     bottom: 0;
-    right: 120px;
+    right: 100px;
     font-weight: 700;
     font-size: 40px;
     color: white;

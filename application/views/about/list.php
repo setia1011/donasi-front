@@ -23,16 +23,13 @@
                            <div id="collapseOne" class="panel-collapse collapse in">
                                  <div class="panel-body">
                                     <table class="table">
+                                    <?php foreach ($aboutlist as $v) { ?>
                                        <tr>
                                           <td>
-                                             <span class="glyphicon glyphicon-pencil text-primary"></span><a href="http://www.jquery2dotnet.com">Sejarah</a>
+                                             <span class="glyphicon glyphicon-pencil text-primary"></span><a href="<?= base_url('about/'.$v->slug_berita); ?>"><?= $v->judul_berita; ?></a>
                                           </td>
                                        </tr>
-                                       <tr>
-                                          <td>
-                                             <span class="glyphicon glyphicon-pencil text-success"></span><a href="http://www.jquery2dotnet.com">Struktur Organisasi</a>
-                                          </td>
-                                       </tr>
+                                    <?php } ?>
                                     </table>
                                  </div>
                            </div>
@@ -40,10 +37,22 @@
                      </div>
                     </div>
                     <div class="col-md-8">
-                        <h4>Tentang Kami</h4>
+                        <?php if ($berita == '') { ?>
+                           <h4>Tentang Kami</h4>
+                           <div style="margin-top: 20px;">
+                              <?= $site->tentang;  ?>
+                           </div>
+                        <?php } else { ?>
+                           <h4><?= $berita->judul_berita; ?></h4>
+                           <div style="margin-top: 20px;">
+                              <?= $berita->isi;  ?>
+                           </div>
+                        <?php } ?>    
+                        <!-- <h4>Tentang Kami</h4>
                         <div style="margin-top: 20px;">
+                           
                            <?= $site->tentang;  ?>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <!-- .row -->
